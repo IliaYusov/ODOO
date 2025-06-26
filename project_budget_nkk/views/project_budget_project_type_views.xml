@@ -1,0 +1,43 @@
+<odoo>
+    <record id="crm_lead_project_type_view_tree" model="ir.ui.view">
+        <field name="name">crm.lead.project.type.tree</field>
+        <field name="model">project_budget.project_type</field>
+        <field name="arch" type="xml">
+            <tree string="Project Types">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="descr"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="crm_lead_project_type_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.project.type.form</field>
+        <field name="model">project_budget.project_type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet string="Project Type">
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <group name="description">
+                        <field name="descr" widget="html"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="crm_lead_project_type_action" model="ir.actions.act_window">
+        <field name="name">Project Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project_budget.project_type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new project type
+            </p>
+        </field>
+    </record>
+</odoo>

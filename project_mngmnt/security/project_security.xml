@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Project rules -->
+
+    <record id="project_project_rule_user" model="ir.rule">
+        <field name="name">Project user: readonly my projects</field>
+        <field name="model_id" ref="model_project_project"/>
+        <field name="domain_force">
+            [
+                ('project_member_ids.employee_id.user_id', '=', user.id)
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('project_mngmnt.project_group_user'))]"/>
+    </record>
+
+    <record id="project_project_rule_project_manager" model="ir.rule">
+        <field name="name">Project manager: see my projects</field>
+        <field name="model_id" ref="model_project_project"/>
+        <field name="domain_force">
+            [
+                ('project_manager_id.user_id', '=', user.id)
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('project_mngmnt.project_group_project_manager'))]"/>
+    </record>
+
+    <record id="project_project_rule_manager" model="ir.rule">
+        <field name="name">Project administrator: see all projects</field>
+        <field name="model_id" ref="model_project_project"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('project_mngmnt.project_group_manager'))]"/>
+    </record>
+
+    <record id="project_project_rule_company" model="ir.rule">
+        <field name="name">Project multi-company</field>
+        <field name="model_id" ref="model_project_project"/>
+        <field name="domain_force">
+            [
+                ('company_id', 'in', company_ids)
+            ]
+        </field>
+    </record>
+
+    <!-- Project stage -->
+
+    <record id="project_stage_rule_company" model="ir.rule">
+        <field name="name">Project stage multi-company</field>
+        <field name="model_id" ref="model_project_stage"/>
+        <field name="domain_force">
+            [
+                '|', ('company_ids', '=', False), ('company_ids', 'in', company_ids)
+            ]
+        </field>
+    </record>
+
+    <!-- Project role -->
+
+    <record id="project_role_rule_company" model="ir.rule">
+        <field name="name">Project role multi-company</field>
+        <field name="model_id" ref="model_project_role"/>
+        <field name="domain_force">
+            [
+                ('company_id', 'in', company_ids)
+            ]
+        </field>
+    </record>
+
+    <!-- Task rules -->
+
+    <record id="task_task_rule_project_user" model="ir.rule">
+        <field name="name">Project user: see my projects tasks</field>
+        <field name="model_id" ref="model_task_task"/>
+        <field name="domain_force">
+            [
+                ('project_id.project_member_ids.employee_id.user_id', '=', user.id)
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('project_mngmnt.project_group_user'))]"/>
+    </record>
+
+    <record id="task_task_rule_project_manager" model="ir.rule">
+        <field name="name">Project manager: see all tasks</field>
+        <field name="model_id" ref="model_task_task"/>
+        <field name="domain_force">
+            [
+                ('parent_ref_type', '=', 'project.project')
+            ]
+        </field>
+        <field name="groups" eval="[(4, ref('project_mngmnt.project_group_manager'))]"/>
+    </record>
+</odoo>

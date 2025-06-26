@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="task_task_action_view_projects_tasks" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">task.task</field>
+        <field name="view_mode">kanban,tree,calendar,form</field>
+        <field name="domain">
+            [
+                ('parent_ref_type', '=', 'project.project'),
+                ('parent_id', '!=', False)
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_parent_ref_type': 'project.project',
+                'search_default_open_tasks': 1
+            }
+        </field>
+        <field name="search_view_id" ref="task.task_task_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tasks found. Let's create one!
+            </p>
+            <p>
+                Organize your tasks by dispatching them across the pipeline.
+                <br/>
+                Collaborate efficiently by chatting in real-time or via email.
+            </p>
+        </field>
+    </record>
+
+    <record id="task_task_view_form_inherit_project" model="ir.ui.view">
+        <field name="name">task.task.form.inherit.project</field>
+        <field name="model">task.task</field>
+        <field name="inherit_id" ref="task.task_task_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type_id']" position="before">
+                <field name="root_task_id" string="Milestone"
+                       attrs="{
+                           'invisible': ['|', ('parent_ref_type', '!=', 'project.project'), ('root_task_id', '=', False)],
+                           'readonly': [('can_edit', '=', False)]
+                       }"/>
+            </xpath>
+            <xpath expr="//field[@name='user_ids']" position="attributes">
+                <attribute name="attrs">
+                    {
+                        'invisible': [('parent_ref_type', '=', 'project.project'), ('root_task_id', '=', False)],
+                        'readonly': [('can_edit', '=', False)]
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//label[@for='date_deadline']" position="after">
+                <label for="date_deadline" string="Planned Dates"
+                       attrs="{'invisible': [('parent_ref_type', '!=', 'project.project')]}"/>
+            </xpath>
+            <xpath expr="//label[@for='date_deadline']" position="attributes">
+                <attribute name="attrs">{'invisible': [('parent_ref_type', '=', 'project.project')]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="before">
+                <field name="planned_date_begin" widget="date"
+                       attrs="{
+                           'invisible': [('parent_ref_type', '!=', 'project.project')],
+                           'readonly': [('can_edit', '=', False)],
+                           'required': [('parent_ref_type', '=', 'project.project')]
+                       }"/>
+                <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"
+                   attrs="{'invisible': [('parent_ref_type', '!=', 'project.project')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

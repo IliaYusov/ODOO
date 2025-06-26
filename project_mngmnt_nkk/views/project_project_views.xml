@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_search_inherit_nkk" model="ir.ui.view">
+        <field name="name">project.project.search.inherit.nkk</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="type_id" filter_domain="[('type_id.name', 'ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_view_tree_inherit_nkk" model="ir.ui.view">
+        <field name="name">project.project.tree.inherit.nkk</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="type_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_view_form_inherit_nkk" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.nkk</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="before">
+                <field name="type_id" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

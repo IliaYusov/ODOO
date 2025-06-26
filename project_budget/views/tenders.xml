@@ -1,0 +1,389 @@
+<odoo>
+    <data>
+        <!--tenders comments        -->
+        <record id="show_projects_tenders_comments_tree" model="ir.ui.view">
+            <field name="name">project_budget.tender_comments.tree</field>
+            <field name="model">project_budget.tender_comments</field>
+            <field name="arch" type="xml">
+                <tree string="tender comments"  editable="bottom">
+                    <field name="date_comment"/>
+<!--                    <field name="is_need_type"  widget="boolean_toggle"/>-->
+                    <field name="type_comment_id"/>
+                    <field name="text_comment" />
+                </tree>
+            </field>
+        </record>
+<!--        end tenders comments-->
+        <record id="show_projects_tenders_sums_tree" model="ir.ui.view">
+            <field name="name">project_budget.tender_sums.tree</field>
+            <field name="model">project_budget.tender_sums</field>
+            <field name="arch" type="xml">
+                <tree string="tender sums" >
+<!--                    <field name="is_main_currency"/>-->
+<!--                    <field name="currency_id"/>-->
+                    <field name="participants_offer_currency_id" invisible = "1"/>
+                    <field name="initial_maximum_contract_price" attrs="{'column_invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'initial_maximum_contract_price_currency_id'}"/>
+                    <field name="initial_maximum_contract_price_currency_id" invisible = "1"/>
+                    <field name="initial_maximum_contract_price_descr" attrs="{'column_invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]}" optional="hide"/>
+                    <field name="participants_offer"
+                           widget="monetary" options="{'currency_field': 'participants_offer_currency_id'}" />
+                    <field name="provision_of_GO" attrs="{'column_invisible': [('parent.is_need_provision_of_GO', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'provision_of_GO_currency_id'}"/>
+                    <field name="provision_of_GO_currency_id" invisible = "1"/>
+                    <field name="provision_of_GO_descr" attrs="{'column_invisible': [('parent.is_need_provision_of_GO', '=', False)]}" optional="hide"/>
+                    <field name="securing_the_application"  attrs="{'column_invisible': [('parent.is_need_securing_the_application', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'securing_the_application_currency_id'}"/>
+                    <field name="securing_the_application_currency_id" invisible = "1"/>
+                    <field name="securing_the_application_descr"  attrs="{'column_invisible': [('parent.is_need_securing_the_application', '=', False)]}" optional="hide"/>
+                    <field name="payment_for_the_victory" attrs="{'column_invisible': [('parent.is_need_payment_for_the_victory', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'payment_for_the_victory_currency_id'}"/>
+                    <field name="payment_for_the_victory_currency_id" invisible = "1"/>
+                    <field name="payment_for_the_victory_descr" attrs="{'column_invisible': [('parent.is_need_payment_for_the_victory', '=', False)]}" optional="hide"/>
+                    <field name="contract_security" attrs="{'column_invisible': [('parent.is_need_contract_security', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'contract_security_currency_id'}"/>
+                    <field name="contract_security_currency_id" invisible = "1"/>
+                    <field name="contract_security_descr" attrs="{'column_invisible': [('parent.is_need_contract_security', '=', False)]}" optional="hide"/>
+                    <field name="site_payment" attrs="{'column_invisible': [('parent.is_need_site_payment', '=', False)]}"
+                           widget="monetary" options="{'currency_field': 'site_payment_currency_id'}"/>
+                    <field name="site_payment_currency_id" invisible = "1"/>
+                    <field name="site_payment_descr" attrs="{'column_invisible': [('parent.is_need_site_payment', '=', False)]}" optional="hide"/>
+                    <field name="participants_offer_descr" optional="Show"/>
+                </tree>
+            </field>
+        </record>
+<!--        end tenders comments-->
+<!--        end tenders comments-->
+        <record id="show_projects_tenders_sums_form" model="ir.ui.view">
+            <field name="name">project_budget.tender_sums.form</field>
+            <field name="model">project_budget.tender_sums</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="tender sums">
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="is_main_currency" widget="boolean_toggle"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+                        <group string="participants_offer">
+                            <group>
+                                <group>
+                                    <field string="currency" name="participants_offer_currency_id"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="participants_offer" widget="monetary" options="{'currency_field': 'participants_offer_currency_id'}"/>
+                                    <field string="vat" name="participants_offer_vat_attribute_id"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="participants_offer_descr"/>
+                            </group>
+                        </group>
+                        <group string="initial_maximum_contract_price" attrs="{'invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="initial_maximum_contract_price_currency_id" attrs="{'invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]
+                                                ,'required': [('parent.is_need_initial_maximum_contract_price', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum"  name="initial_maximum_contract_price" attrs="{'invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]}"
+                                            widget="monetary" options="{'currency_field': 'initial_maximum_contract_price_currency_id'}"/>
+                                    <field string="vat" name="initial_maximum_contract_price_vat_attribute_id" attrs="{'invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)],
+                                    'required': [('parent.is_need_initial_maximum_contract_price', '=', True)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="initial_maximum_contract_price_descr" attrs="{'invisible': [('parent.is_need_initial_maximum_contract_price', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string="provision_of_GO" attrs="{'invisible': [('parent.is_need_provision_of_GO', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="provision_of_GO_currency_id" attrs="{'invisible': [('parent.is_need_provision_of_GO', '=', False)]
+                                    ,'required': [('parent.is_need_provision_of_GO', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="provision_of_GO" attrs="{'invisible': [('parent.is_need_provision_of_GO', '=', False)]}"
+                                                    widget="monetary" options="{'currency_field': 'provision_of_GO_currency_id'}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="provision_of_GO_descr" attrs="{'invisible': [('parent.is_need_provision_of_GO', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string="securing_the_application" attrs="{'invisible': [('parent.is_need_securing_the_application', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="securing_the_application_currency_id" attrs="{'invisible': [('parent.is_need_securing_the_application', '=', False)]
+                                    ,'required': [('parent.is_need_securing_the_application', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="securing_the_application"  attrs="{'invisible': [('parent.is_need_securing_the_application', '=', False)]}"
+                                           widget="monetary" options="{'currency_field': 'securing_the_application_currency_id'}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="securing_the_application_descr"  attrs="{'invisible': [('parent.is_need_securing_the_application', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string ="payment_for_the_victory" attrs="{'invisible': [('parent.is_need_payment_for_the_victory', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="payment_for_the_victory_currency_id" attrs="{'invisible': [('parent.is_need_payment_for_the_victory', '=', False)]
+                                    ,'required': [('parent.is_need_payment_for_the_victory', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="payment_for_the_victory" attrs="{'invisible': [('parent.is_need_payment_for_the_victory', '=', False)]}"
+                                            widget="monetary" options="{'currency_field': 'payment_for_the_victory_currency_id'}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="payment_for_the_victory_descr" attrs="{'invisible': [('parent.is_need_payment_for_the_victory', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string="contract_security" attrs="{'invisible': [('parent.is_need_contract_security', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="contract_security_currency_id"  attrs="{'invisible': [('parent.is_need_contract_security', '=', False)]
+                                    ,'required': [('parent.is_need_contract_security', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="contract_security" attrs="{'invisible': [('parent.is_need_contract_security', '=', False)]}"
+                                                    widget="monetary" options="{'currency_field': 'contract_security_currency_id'}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="contract_security_descr" attrs="{'invisible': [('parent.is_need_contract_security', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group string ="site_payment" attrs="{'invisible': [('parent.is_need_site_payment', '=', False)]}">
+                            <group>
+                                <group>
+                                    <field string="currency" name="site_payment_currency_id" attrs="{'invisible': [('parent.is_need_site_payment', '=', False)]
+                                    ,'required': [('parent.is_need_site_payment', '=', True)]}"/>
+                                </group>
+                                <group>
+                                    <field string="sum" name="site_payment" attrs="{'invisible': [('parent.is_need_site_payment', '=', False)]}"
+                                           widget="monetary" options="{'currency_field': 'site_payment_currency_id'}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <field string="descr" name="site_payment_descr" attrs="{'invisible': [('parent.is_need_site_payment', '=', False)]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--        end tenders comments-->
+
+
+        <!-- tenders-->
+        <record id="show_projects_tenders_tree" model="ir.ui.view">
+            <field name="name">project_budget.tenders.tree</field>
+            <field name="model">project_budget.tenders</field>
+            <field name="arch" type="xml">
+                <tree string="tenders" default_order="date_of_filling_in desc">
+                    <field name="tender_id" optional="hide"/>
+                    <field name="project_ids" optional="show" widget="many2many_tags"/>
+<!--                    <field name="currency_id" optional="show"/>-->
+                    <field name="date_of_filling_in"/>
+                    <field name="signer_id" optional="show"/>
+                    <field name="auction_number" optional="show"/>
+                    <field name="url_tender" widget="html" optional="show" class="text-wrap"/>
+                    <field name="partner_ids" widget="many2many_tags" optional="show"/>
+                    <field name="organizer_partner_id" optional="show" class="text-wrap"/>
+                    <field name="contact_information" optional="hide"/>
+                    <field name="name_of_the_purchase" optional="show"/>
+                    <field name="okpd2" optional="hide"/>
+                    <field name="responsible_ids" widget="many2many_avatar_employee"
+                           options="{'relation': 'hr.employee.public'}" optional="show"/>
+                    <field name="responsible_dkp_ids" widget="many2many_avatar_employee"
+                           groups="project_budget.project_budget_tenders_user,project_budget.project_budget_tenders_admin"
+                           options="{'relation': 'hr.employee.public'}"
+                           optional="hide"/>
+                    <field name="responsible_dkp_str"
+                           groups="!project_budget.project_budget_tenders_user,!project_budget.project_budget_tenders_admin"
+                           optional="hide"/>
+                    <field name="vat_attribute_id" optional="hide"/>
+<!--                    <field name="initial_maximum_contract_price" optional="show"/>-->
+<!--                    <field name="participants_offer" optional="hide"/>-->
+<!--                    <field name="securing_the_application" optional="show"/>-->
+<!--                    <field name="contract_security" optional="show"/>-->
+<!--                    <field name="provision_of_GO" optional="show"/>-->
+                    <field name="licenses_SRO" optional="show"/>
+                    <field name="key_account_manager_ids" optional="hide" widget="many2many_tags"/>
+<!--                    <field name="project_manager_id" optional="hide"/>-->
+                    <field name="current_status" optional="show"/>
+<!--                    <field name="payment_for_the_victory" optional="show"/>-->
+                    <field name="presale_number" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="show_projects_tenders_form" model="ir.ui.view">
+            <field name="name">project_budget.tenders.form</field>
+            <field name="model">project_budget.tenders</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                         <button string="Save" type="object" class="btn-primary" special="save"/>
+                    </header>
+                    <sheet string="tender" >
+						<div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="action_open_attachments"
+                                    icon="fa-files-o">
+                                <field string="Attachments" name="attachment_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <field name="tender_id" readonly="1"/>
+                        <group col="6">
+                            <group colspan="2">
+                                <field string= "main currency" name="currency_id"/>
+                            </group>
+                            <group colspan="1">
+                                <field name="is_need_projects" widget="boolean_toggle" />
+                            </group>
+                            <group colspan="2">
+                                <field name="project_ids" widget="many2many_tags" attrs="{'invisible': [('is_need_projects', '=', False)],'required': [('is_need_projects', '=', True)]}"/>
+                            </group>
+                            <group colspan="1">
+                                <field name="key_account_manager_ids" widget="many2many_avatar_employee" attrs="{'invisible': [('is_need_projects', '=', False)]}"/>
+<!--                                <field name="project_manager_id"/>-->
+                            </group>
+                        </group>
+                        <group col="6">
+                            <group colspan="3">
+                                <field name="responsible_ids"
+                                       options="{'no_open': True, 'no_quick_create': True, 'relation': 'hr.employee.public'}"
+                                       widget="many2many_avatar_employee"/>
+                            </group>
+                            <group colspan="3">
+                                <field name="responsible_dkp_ids"
+                                       options="{'no_open': True, 'no_quick_create': True, 'relation': 'hr.employee.public'}"
+                                       widget="many2many_avatar_employee"
+                                       groups="project_budget.project_budget_tenders_user,project_budget.project_budget_tenders_admin"/>
+                                <field name="responsible_dkp_str"
+                                       groups="!project_budget.project_budget_tenders_user,!project_budget.project_budget_tenders_admin"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="current_status"/>
+                            </group>
+                            <group>
+                                <field name="signer_id" options="{'no_open': True,}"/>
+                            </group>
+                        </group>
+                        <group col="3">
+                            <group>
+                                <field name="date_of_filling_in" string ="event date"/>
+                            </group>
+                            <group>
+                                <field name="auction_number"/>
+                            </group>
+                            <group>
+                                <field name="vat_attribute_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="partner_ids" widget="many2many_tags" options="{'no_open': True,}"/>
+                                <field name="organizer_partner_id" options="{'no_open': True,}"/>
+                            </group>
+                            <group>
+                                <field name="contact_information"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="url_tender" widget="html"/>
+                            </group>
+                            <group>
+                                <field name="url_contract" widget="html"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="name_of_the_purchase"/>
+                            </group>
+                            <group>
+                                <field name="essence_projects" string="name of the purchase from project"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="okpd2"/>
+                            </group>
+                            <group>
+                                <field name="presale_number"/>
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="is_need_contract_security" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="is_need_provision_of_GO" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="is_need_initial_maximum_contract_price" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="is_need_site_payment"  widget="boolean_toggle" />
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="is_need_payment_for_the_victory" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="is_need_securing_the_application" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="is_need_licenses_SRO" widget="boolean_toggle" />
+                            </group>
+                            <group>
+                                <field name="licenses_SRO" attrs="{'invisible': [('is_need_licenses_SRO', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <field name="tender_sums_ids"
+                            widget="section_and_note_one2many"
+                            mode="tree" context="{'default_currency_id':currency_id}" >
+                        </field>
+
+                        <field name="tender_comments_ids"
+                            widget="section_and_note_one2many"
+                            mode="tree" >
+                        </field>
+                    </sheet>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="activity_ids" widget="mail_activity"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </form>
+                </field>
+            </record>
+
+            <record id="show_projects_tenders" model="ir.actions.act_window">
+                <field name="name">project_budget.tenders</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">project_budget.tenders</field>
+                <field name="view_mode">tree,form</field>
+                <field name="search_view_id" ref="view_tender_search"></field>
+                <field name="context">{'search_default_id': 1}</field>
+                <field name="help" type="html">
+                  <p class="o_view_nocontent_smiling_face">
+                    Create a new tender of project
+                  </p><p>
+                    each project can have a tenders
+                  </p>
+                </field>
+            </record>
+<!-- end tenders-->
+
+    </data>
+</odoo>

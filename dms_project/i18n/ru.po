@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dms_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-25 21:10+0000\n"
+"PO-Revision-Date: 2025-02-25 21:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: dms_project
+#: model:ir.model.fields,field_description:dms_project.field_project_project__directory_id
+msgid "Directory"
+msgstr "Каталог"
+
+#. module: dms_project
+#: model:ir.model.fields,field_description:dms_project.field_project_project__file_ids
+#: model_terms:ir.ui.view,arch_db:dms_project.project_project_view_form_inherit_dms
+msgid "Files"
+msgstr "Файлы"
+
+#. module: dms_project
+#: model:ir.model.fields,field_description:dms_project.field_project_project__file_count
+msgid "Files Count"
+msgstr "Количество файлов"
+
+#. module: dms_project
+#: model:ir.model,name:dms_project.model_project_project
+msgid "Project"
+msgstr "Проект"
+
+#. module: dms_project
+#: model:dms.directory,name:dms_project.dms_directory_project_directory
+msgid "Projects"
+msgstr "Проекты"

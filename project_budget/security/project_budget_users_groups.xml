@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <record id="project_budget.module_category_services_budget_project" model="ir.module.category">
+            <field name="name">project budget nkk</field>
+            <field name="description">Helps you manage your budget projects ...</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="project_budget_users_readonly" model="res.groups">
+            <field name="name">Project User: read only</field>
+            <field name="category_id" ref="project_budget.module_category_services_budget_project"/>
+        </record>
+
+        <record id="project_budget_users" model="res.groups">
+            <field name="name">Project User</field>
+            <field name="category_id" ref="project_budget.module_category_services_budget_project"/>
+        </record>
+
+        <record id="project_budget_group_key_account_manager" model="res.groups">
+            <field name="name">Key Account Manager</field>
+            <field name="category_id" ref="module_category_services_budget_project"/>
+            <field name="implied_ids" eval="[(4, ref('project_budget.project_budget_users'))]"/>
+        </record>
+
+        <record id="project_budget_group_project_manager" model="res.groups">
+            <field name="name">Project Manager</field>
+            <field name="category_id" ref="module_category_services_budget_project"/>
+            <field name="implied_ids" eval="[(4, ref('project_budget.project_budget_users'))]"/>
+        </record>
+
+        <record id="project_budget_group_project_curator" model="res.groups">
+            <field name="name">Project Curator</field>
+            <field name="category_id" ref="module_category_services_budget_project"/>
+            <field name="implied_ids" eval="[(4, ref('project_budget.project_budget_users'))]"/>
+        </record>
+
+        <record id="project_budget_group_project_fixed_editor" model="res.groups">
+            <field name="name">Fixed Project Editor</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="project_budget_group_sales_plan_editor" model="res.groups">
+            <field name="name">Sales Plan Editor</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+<!--        TODO: включить пользователя в администратора?-->
+        <record id="project_budget_admin" model="res.groups">
+            <field name="name">Project Admin</field>
+            <field name="category_id" ref="project_budget.module_category_services_budget_project"/>
+            <field name="implied_ids" eval="
+                [
+                    (4, ref('project_budget_group_project_fixed_editor')),
+                    (4, ref('project_budget_group_sales_plan_editor'))
+                ]
+            "/>
+        </record>
+
+        <record id="project_budget_tenders_user" model="res.groups">
+            <field name="name">Tender user</field>
+            <field name="category_id" ref="project_budget.module_category_services_budget_project"/>
+            <field name="implied_ids" eval="[(4, ref('project_budget_users_readonly'))]"/>
+        </record>
+
+        <record id="project_budget_tenders_admin" model="res.groups">
+            <field name="name">Tender admin</field>
+            <field name="category_id" ref="project_budget.module_category_services_budget_project"/>
+            <field name="implied_ids" eval="[(4, ref('project_budget_users_readonly'))]"/>
+        </record>
+
+    </data>
+</odoo>

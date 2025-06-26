@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_inherit_account_budget" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.account.budget</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_budgets" type="object" class="oe_stat_button"
+                        groups="project_mngmnt.project_group_project_manager" icon="fa-rouble">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="practical_amount_total" widget="statinfo" nolabel="1"/>
+                            <span> / </span>
+                            <field name="planned_amount_total" widget="statinfo" nolabel="1"/>
+                        </span>
+                        <span class="o_stat_text">Budget</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_view_kanban_inherit_account_budget" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherit.account.budget</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="planned_amount_total" groups="project_mngmnt.project_group_project_manager"/>
+                <field name="budget_spent_progress" groups="project_mngmnt.project_group_project_manager"/>
+            </xpath>
+            <xpath expr="//templates//div[hasclass('oe_kanban_bottom_left')]" position="inside">
+                <t t-if="record.analytic_account_id and record.planned_amount_total.raw_value"
+                   groups="project_mngmnt.project_group_project_manager">
+                    <t t-set="budget_spent_progress" t-value="record.budget_spent_progress.raw_value"/>
+                    <i role="img" aria-label="Budget"
+                       t-attf-class="ms-1 fa fa-rouble text-{{ budget_spent_progress &gt;= 0.7 ? 'success' : budget_spent_progress &gt;= 0 ? 'warning' : 'danger' }}"
+                       t-attf-title="Budget {{ budget_spent_progress &gt;= 0.7 ? 'on track' : budget_spent_progress &gt;= 0 ? 'soon overspent' : 'overspent' }}"/>
+                </t>
+            </xpath>
+        </field>
+    </record>
+</odoo>

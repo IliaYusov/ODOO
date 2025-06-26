@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="document_flow_document_kind_order_to_create_working_group"
+                model="document_flow.document.kind.template">
+            <field name="name">Order To Create Working Group</field>
+            <field name="keep_records_by_type">False</field>
+        </record>
+    </data>
+</odoo>

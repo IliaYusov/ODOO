@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_role_view_search" model="ir.ui.view">
+        <field name="name">project.role.search</field>
+        <field name="model">project.role</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="project_role_view_tree" model="ir.ui.view">
+        <field name="name">project.role.tree</field>
+        <field name="model">project.role</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name" optional="show"/>
+                <field name="description" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_role_view_form" model="ir.ui.view">
+        <field name="name">project.role.form</field>
+        <field name="model">project.role</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <h1><field name="name" placeholder="e.g. Administrator"/></h1>
+                    <separator name="description" string="Description"/>
+                    <field name="description" nolabel="1" placeholder="Description..."/>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_role_action" model="ir.actions.act_window">
+        <field name="name">Project Roles</field>
+        <field name="res_model">project.role</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

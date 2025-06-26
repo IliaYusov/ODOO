@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_role_view_tree_inherit_hr_timesheet" model="ir.ui.view">
+        <field name="name">project.project.tree.inherit.hr.timesheet</field>
+        <field name="model">project.role</field>
+        <field name="inherit_id" ref="project_mngmnt.project_role_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="currency_id" invisible="1"/>
+                <field name="hourly_cost" widget="monetary" groups="project_mngmnt.project_group_manager"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_role_view_form_inherit_hr_timesheet" model="ir.ui.view">
+        <field name="name">project.role.form.inherit.hr.timesheet</field>
+        <field name="model">project.role</field>
+        <field name="inherit_id" ref="project_mngmnt.project_role_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//separator[@name='description']" position="before">
+                <group>
+                    <field name="hourly_cost" widget="monetary" groups="project_mngmnt.project_group_manager"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

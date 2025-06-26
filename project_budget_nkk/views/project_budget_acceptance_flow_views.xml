@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="project_budget_fact_acceptance_flow_view_form_inherit_nkk" model="ir.ui.view">
+        <field name="name">project.budget.fact.acceptance.flow.form.inherit.nkk</field>
+        <field name="model">project_budget.fact_acceptance_flow</field>
+        <field name="inherit_id" ref="project_budget.project_budget_fact_acceptance_flow_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='amount']" position="inside">
+                <field name="margin_in_company_currency" invisible="1"/>
+                <group>
+                    <field name="margin" attrs="{'readonly': [('margin_manual_input', '=', False)]}"/>
+                    <field name="margin_manual_input" placeholder="manual input of margin"/>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='amount']" position="after">
+                <group>
+                    <field name="planned_acceptance_flow_id" options="{'no_create_edit': True, 'no_open': True}"
+                           attrs="{
+                               'invisible': [('company_id', '!=', 3)],
+                               'readonly': [('can_edit', '=', False)]
+                           }"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='distribution_acceptance_ids']" position="attributes">
+                <attribute name="attrs">{'invisible': [('company_id', '=', 3)]}</attribute>
+                <attribute name="groups">!base.group_no_one</attribute>
+            </xpath>
+            <xpath expr="//field[@name='distribution_acceptance_ids']" position="after">
+                <field name="distribution_acceptance_ids" mode="tree" widget="section_and_note_one2many"
+                       attrs="{'readonly': [('can_edit', '=', False)]}" groups="base.group_no_one">
+                    <tree editable="bottom">
+                        <field name="fact_acceptance_flow_id" invisible="1"/>
+                        <field name="fact_currency_id" invisible="1"/>
+                        <field name="planned_acceptance_flow_id"/>
+                        <field name="plan_currency_id" invisible="1"/>
+                        <field name="company_currency_id" invisible="1"/>
+                        <field name="amount_plan" string="Untaxed Planned Amount" widget="monetary"/>
+                        <field name="amount_plan_in_company_currency"
+                               string="Untaxed Planned Amount In Company Currency"
+                               groups="base.group_multi_currency" widget="monetary" optional="hide"/>
+                        <field name="amount" string="Untaxed Amount" widget="monetary"/>
+                        <field name="amount_in_company_currency" string="Untaxed Amount In Company Currency"
+                               groups="base.group_multi_currency" optional="hide"/>
+                        <field name="amount_remaining" string="Remaining Amount"/>
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

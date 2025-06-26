@@ -1,0 +1,94 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_mngmnt_nkk
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-31 07:18+0000\n"
+"PO-Revision-Date: 2025-03-31 07:18+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.constraint,message:project_mngmnt_nkk.constraint_project_type_name_uniq
+msgid "A type with the same name already exists."
+msgstr "Тип проекта с таким наименованием уже существует."
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_project__code
+msgid "Code"
+msgstr "Код"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__create_uid
+msgid "Created by"
+msgstr "Создатель"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__create_date
+msgid "Created on"
+msgstr "Дата создания"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__display_name
+msgid "Display Name"
+msgstr "Отображаемое наименование"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__id
+msgid "ID"
+msgstr ""
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type____last_update
+msgid "Last Modified on"
+msgstr "Дата последнего изменения"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__write_uid
+msgid "Last Updated by"
+msgstr "Автор последнего изменения"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__write_date
+msgid "Last Updated on"
+msgstr "Дата последнего изменения"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_type__name
+msgid "Name"
+msgstr "Наименование"
+
+#. module: project_mngmnt_nkk
+#: model:document_flow.document.kind.template,name:project_mngmnt_nkk.document_flow_document_kind_order_to_create_working_group
+msgid "Order To Create Working Group"
+msgstr ""
+
+#. module: project_mngmnt_nkk
+#: model:ir.model,name:project_mngmnt_nkk.model_project_project
+msgid "Project"
+msgstr "Проект"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model,name:project_mngmnt_nkk.model_project_type
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_project__type_id
+msgid "Project Type"
+msgstr "Тип проекта"
+
+#. module: project_mngmnt_nkk
+#: model:ir.actions.act_window,name:project_mngmnt_nkk.project_type_action
+#: model:ir.ui.menu,name:project_mngmnt_nkk.project_menu_configuration_types
+#: model_terms:ir.ui.view,arch_db:project_mngmnt_nkk.project_type_view_tree
+msgid "Project Types"
+msgstr "Типы проектов"
+
+#. module: project_mngmnt_nkk
+#: model:ir.model.fields,field_description:project_mngmnt_nkk.field_project_project__planned_amount_total
+msgid "Total Planned Amount"
+msgstr "Плановая сумма выручки"

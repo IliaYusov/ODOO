@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* contacts_extended
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-30 20:22+0000\n"
+"PO-Revision-Date: 2024-11-30 20:22+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: contacts_extended
+#: model:ir.model,name:contacts_extended.model_res_config_settings
+msgid "Config Settings"
+msgstr "Настройки"
+
+#. module: contacts_extended
+#: model:ir.model,name:contacts_extended.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: contacts_extended
+#: model_terms:ir.ui.view,arch_db:contacts_extended.res_config_settings_view_form_inherit_partner_extension
+msgid "Documentation"
+msgstr "Документация"
+
+#. module: contacts_extended
+#: model:ir.model.fields,field_description:contacts_extended.field_res_config_settings__module_partner_dadata
+msgid "Find a company by VAT"
+msgstr "Поиск организации по ИНН"
+
+#. module: contacts_extended
+#: model:ir.model.fields,field_description:contacts_extended.field_res_partner__full_name
+#: model:ir.model.fields,field_description:contacts_extended.field_res_users__full_name
+msgid "Full Name"
+msgstr "Полное наименование"
+
+#. module: contacts_extended
+#: model_terms:ir.ui.view,arch_db:contacts_extended.res_config_settings_view_form_inherit_partner_extension
+msgid ""
+"It will help your immediately enter clean data.\n"
+"                                Enrich contacts with information from government directories."
+msgstr "Поможет Вам сразу вводить чистые данные.\n"
+"                                Обогатит контакты сведениями из государственных справочников."

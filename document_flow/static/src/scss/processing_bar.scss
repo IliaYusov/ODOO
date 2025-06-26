@@ -1,0 +1,88 @@
+$o-processing-step-width: map-get($container-max-widths, 'lg') / 5 !default;
+
+.o_processing_main {
+    background: white center top;
+    background-size: cover;
+
+    // = Color Variations
+    // ------------------------------------------------------------------------
+    @each $key, $values in $o-processing-colors {
+        &.o_processing_#{$key} {
+            $-ui: map-get($values, 'ui');
+
+            @include print-variable('o-processing-todo-color', nth($-ui, 1));
+            @include print-variable('o-processing-done-color', nth($-ui, 2));
+            @include print-variable('o-processing-cancel-color', nth($-ui, 3));
+        }
+    }
+
+    .o_processing_wrap {
+        overflow-x: auto;
+    }
+
+    // = Step Design
+    // ------------------------------------------------------------------------
+    .o_processing_step {
+        flex: 1 1 0;
+
+        .o_processing_step_content {
+            width: $o-processing-step-width;
+        }
+
+        .o_processing_progress {
+            height: $o-processing-progress-size;
+            width: calc(100% - #{$o-processing-dot-size});
+            background: var(--o-processing-todo-color, #{$o-brand-odoo});
+            transform:
+                translateX(-100%)
+                translateY($o-processing-dot-size * .5 - $o-processing-progress-size * .5);
+        }
+
+        .o_processing_dot {
+            width: $o-processing-dot-size;
+            height: $o-processing-dot-size;
+            padding-top: .5em;
+            background-color: var(--o-processing-todo-color, $o-brand-odoo);
+            color: transparent;
+            transition: all $o-processing-base-time ease;
+            transform: scale3d(.5, .5, .5);
+        }
+
+        &:first-of-type .o_processing_progress {
+            display: none;
+        }
+
+        .o_processing_step_title,
+        .o_processing_dot_isChecked {
+            color: #fff;
+        }
+
+        // = Step Design
+        // --------------------------------------------------------------------
+        &[data-step-state="todo"]  {
+            .o_processing_dot, .o_processing_progress {
+                background: var(--o-processing-todo-color, #{$o-brand-primary});
+            }
+        }
+
+        &[data-step-state="done"]  {
+            .o_processing_dot, .o_processing_progress {
+                background: var(--o-processing-done-color, #{$o-brand-primary});
+            }
+
+            .o_processing_dot {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        &[data-step-state="cancel"]  {
+            .o_processing_dot, .o_processing_progress {
+                background: var(--o-processing-cancel-color, #{$o-brand-primary});
+            }
+
+            .o_processing_dot {
+                transform: scale3d(1, 1, 1);
+            }
+        }
+    }
+}

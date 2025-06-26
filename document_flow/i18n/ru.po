@@ -1,0 +1,2040 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* document_flow
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-08 13:19+0000\n"
+"PO-Revision-Date: 2024-10-08 13:19+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: document_flow
+#: model:ir.actions.report,print_report_name:document_flow.action_report_event_acknowledgement_form
+msgid "'Acknowledgement form \"%s\"' % object.name"
+msgstr ""
+"'Лист ознакомления \"%s от %s\"' % (object.name, "
+"object.date_start.strftime('%d.%m.%Y'))"
+
+#. module: document_flow
+#: model:ir.actions.report,print_report_name:document_flow.action_report_event_decisions_list
+msgid "'Decisions list \"%s\"' % object.name"
+msgstr "'Список решений \"%s\"' % object.name"
+
+#. module: document_flow
+#: model:ir.actions.report,print_report_name:document_flow.action_report_event_protocol
+msgid "'Protocol \"%s\"' % object.name"
+msgstr "'Протокол \"%s\"' % object.name"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+msgid ""
+"<span class=\"fa fa-refresh\"/>\n"
+"                                    <span>Fill by template</span>"
+msgstr ""
+"<span class=\"fa fa-refresh\"/>\n"
+"                                    <span>Заполнить по шаблону</span>"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__access_setting_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_accessibility_setting_view_tree
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_template_view_form
+msgid "Accessibility Settings"
+msgstr "Настройки доступности"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Acknowledgement form"
+msgstr "Лист ознакомления"
+
+#. module: document_flow
+#: model:ir.actions.report,name:document_flow.action_report_event_acknowledgement_form
+msgid "Acknowledgement form (docx)"
+msgstr "Лист ознакомления (docx)"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model,name:document_flow.model_document_flow_action
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__action_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__action_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__action_id
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_form
+#, python-format
+msgid "Action"
+msgstr "Действие"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__action_count
+msgid "Action Count"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_action_executor
+msgid "Action Executor"
+msgstr "Исполнитель"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_needaction
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_form
+msgid "Action Title..."
+msgstr "Заголовок..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__child_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__action_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__action_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_tree
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+msgid "Actions"
+msgstr "Действия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__active
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__active
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__active
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__active
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__active
+msgid "Active"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_ids
+msgid "Activities"
+msgstr "Активности"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_exception_decoration
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Оформление исключения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_state
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_state
+msgid "Activity State"
+msgstr "Состояние активности"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_type_icon
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Иконка типа активности"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__actual_executor_id
+msgid "Actual Executor"
+msgstr "Фактический исполнитель"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/decisions_list.py:0
+#, python-format
+msgid "Actual executor"
+msgstr "Фактический исполнитель"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Add a list of invited members (separated by commas)."
+msgstr "Добавьте список приглашенных участников (разделенных запятыми)."
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Add attachments for this event"
+msgstr "Добавьте вложение для мероприятия"
+
+#. module: document_flow
+#: model:res.groups,name:document_flow.group_document_flow_manager
+msgid "Administrator"
+msgstr "Администратор"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__after_decision_id
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__deadline_type__after_decision
+msgid "After Decision"
+msgstr "После решения"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type_sequence__after_the_previous
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action_executor__type_sequence__after_the_previous
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process_executor__type_sequence__after_the_previous
+#, python-format
+msgid "After the previous"
+msgstr "После предыдущего"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__name
+msgid "Agenda"
+msgstr "Повестка"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Agenda of the event:"
+msgstr "Повестка:"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Agree on a protocol of event"
+msgstr "Согласование протокола мероприятия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__agreed_id
+#: model:task.stage,name:document_flow.agreement_task_stage_agreed
+#: model:task.stage.route,name:document_flow.agreement_task_stage_route_in_progress_agreed
+#: model:task.stage.route,name:document_flow.agreement_task_stage_route_to_do_agreed
+msgid "Agreed"
+msgstr "Согласовант"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type__agreement
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__type__agreement
+#: model:task.type,name:document_flow.task_type_agreement
+#, python-format
+msgid "Agreement"
+msgstr "Согласование"
+
+#. module: document_flow
+#: model:task.type,name:document_flow.task_type_review
+msgid "Agreement 1"
+msgstr "Ознакомление"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__task_sequence__all_at_once
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__task_sequence__all_at_once
+#, python-format
+msgid "All At Once"
+msgstr "Всем сразу"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Annex %s"
+msgstr "Приложение %s"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_annex_view_form
+msgid "Annex..."
+msgstr "Приложение..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__annex_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Annexes"
+msgstr "Приложения"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event__state__approved
+msgid "Approved"
+msgstr "Согласовано"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_search
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.role_executor_view_form
+msgid "Archived"
+msgstr "В архиве"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_attachment_count
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_attachment_count
+msgid "Attachment Count"
+msgstr "Вложения"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__attachment_count
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+#, python-format
+msgid "Attachments"
+msgstr "Вложения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__author_id
+msgid "Author"
+msgstr "Подготовил"
+
+#. module: document_flow
+#: model:document_flow.auto_substitution,name:document_flow.document_flow_auto_substitution_author
+msgid "Author of the document"
+msgstr "Автор документа"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_auto_substitutions_form
+#: model:ir.model,name:document_flow.model_document_flow_auto_substitution
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_form
+#, python-format
+msgid "Auto-substitution"
+msgstr "Автоподстановка"
+
+#. module: document_flow
+#: model:ir.ui.menu,name:document_flow.menu_auto_substitution
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_tree
+msgid "Auto-substitutions"
+msgstr "Автоподстановки"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__state__break
+#, python-format
+msgid "Break"
+msgstr "Прерван"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+msgid "Break processing"
+msgstr "Прервать обработку"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__can_edit
+msgid "Can Edit"
+msgstr ""
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_wizard_resume_view_form
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: document_flow
+#: model:document_flow.document.state,name:document_flow.document_flow_document_state_close
+msgid "Close"
+msgstr "Закрыт"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__code
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__code
+msgid "Code"
+msgstr "Код"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#: code:addons/document_flow/report/decisions_list.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__comment
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__comment
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_wizard_resume_view_form
+#, python-format
+msgid "Comment"
+msgstr "Комментарий"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_wizard_resume_view_form
+msgid "Comment..."
+msgstr "Комментарий..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__company_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__company_ids
+msgid "Companies"
+msgstr "Компании"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__company_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__company_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__company_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__company_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__company_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__company_id
+msgid "Company"
+msgstr "Компания"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event__state__completed
+msgid "Completed"
+msgstr "Завершено"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type__complex
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__type__complex
+#, python-format
+msgid "Complex"
+msgstr "Комплексный"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_action__start_condition
+msgid "Conditions that will be checked before action will be started."
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_process__start_condition
+msgid "Conditions that will be checked before process will be started."
+msgstr ""
+
+#. module: document_flow
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_configuration
+msgid "Configuration"
+msgstr "Настройки"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Contract"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__controller_ref
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__controller_ref
+msgid "Controller"
+msgstr "Контролер"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__controller_ref_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__controller_ref_id
+msgid "Controller Id"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__controller_ref_type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__controller_ref_type
+msgid "Controller Type"
+msgstr ""
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Copy_%s"
+msgstr "Копия_%s"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Could not be determined '%s'. Check the route or settings."
+msgstr ""
+"Не удалось определить '%s'. Проверьте маршрут согласования или настройки."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__create_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__create_uid
+msgid "Created by"
+msgstr "Автор"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__create_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__create_date
+msgid "Created on"
+msgstr "Дата создания"
+
+#. module: document_flow
+#: model:document_flow.document.state,name:document_flow.document_flow_document_state_current
+msgid "Current"
+msgstr "Действующий"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__date
+#, python-format
+msgid "Date"
+msgstr "Дата"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__date_closed
+msgid "Date Closed"
+msgstr "Дата закрытия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__date_created
+msgid "Date Created"
+msgstr "Дата создания"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__date_deadline
+msgid "Date Deadline"
+msgstr "Срок исполнения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__date_end
+msgid "Date End"
+msgstr "Дата окончания"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__date_start
+msgid "Date Start"
+msgstr "Дата запуска"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/decisions_list.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__date_deadline
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__date_deadline
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__date_deadline
+#, python-format
+msgid "Deadline"
+msgstr "Срок исполнения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__deadline_type
+msgid "Deadline Type"
+msgstr "Выполнить"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__name
+msgid "Decided"
+msgstr "Решили"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_decision_view_form
+msgid "Decided..."
+msgstr "Решили..."
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model_terms:ir.ui.view,arch_db:document_flow.event_annex_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_decision_view_form
+#, python-format
+msgid "Decision"
+msgstr "Решение"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__decision_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Decisions"
+msgstr "Обсуждения и решения"
+
+#. module: document_flow
+#: model:ir.actions.report,name:document_flow.action_report_event_decisions_list
+msgid "Decisions list (xlsx)"
+msgstr "Список решений (xlsx)"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Decisions:"
+msgstr "Обсуждения и решения:"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/decisions_list.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__description
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__name
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_annex_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_decision_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_question_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+#, python-format
+msgid "Description"
+msgstr "Описание"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Description..."
+msgstr "Описание..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__display_name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__display_name
+msgid "Display Name"
+msgstr "Наименование"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model,name:document_flow.model_document_flow_document
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_search
+#, python-format
+msgid "Document"
+msgstr "Документ"
+
+#. module: document_flow
+#: model:ir.actions.client,name:document_flow.action_document_flow_dashboard
+#: model:ir.ui.menu,name:document_flow.document_flow_menu
+msgid "Document Flow"
+msgstr "Документооборот"
+
+#. module: document_flow
+#: model:ir.module.category,name:document_flow.module_category_document_flow_management
+msgid "Document Flow Management"
+msgstr "Документооборот"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_processing_wizard_resume
+msgid "Document Flow Processing Wizard: Resume"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_document_kind
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__template_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__document_kind_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__document_kind_id
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_template_view_form
+msgid "Document Kind"
+msgstr "Вид документа"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_document_kind_accessibility_setting
+msgid "Document Kind Accessibility Setting"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__sequence_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__sequence_id
+msgid "Document Kind Sequence"
+msgstr "Нумератор"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_document_kind_template
+msgid "Document Kind Template"
+msgstr ""
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_template_view_form
+msgid "Document Kind Title..."
+msgstr "Наименование вида документа"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_document_kind_type
+msgid "Document Kind Type"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_document_kind_template_view_form
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_document_kind
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_template_view_tree
+msgid "Document Kinds"
+msgstr "Виды документов"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__properties_definition
+msgid "Document Properties"
+msgstr "Свойства"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_document_state
+msgid "Document State"
+msgstr "Статус документа"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+msgid "Document Title..."
+msgstr "Заголовок..."
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+msgid "Document description..."
+msgstr "Описание документа..."
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_documents_form
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__document_ids
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_document
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_search
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_tree
+msgid "Documents"
+msgstr "Документы"
+
+#. module: document_flow
+#: model:document_flow.document.state,name:document_flow.document_flow_document_state_draft
+msgid "Draft"
+msgstr "Проект"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Due date: %s"
+msgstr "Срок исполнения: %s"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Due date: within %s days after execution paragraph %s"
+msgstr "Срок исполнения: в течение %s дней после выполнения пункта %s"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_processing__template_id_domain
+msgid "Dynamic domain used for the template"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__email_cc
+msgid "Email cc"
+msgstr "Копия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__date_end
+msgid "End Date"
+msgstr "Дата окончания"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Error! You cannot create a recursive hierarchy of process."
+msgstr "Ошибка! Вы не можете создавать рекурсивную иерархию процессов."
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model,name:document_flow.model_document_flow_event
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__event_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__event_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__event_id
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+#, python-format
+msgid "Event"
+msgstr "Мероприятие"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Event \"%s\" from %s"
+msgstr "Мероприятия \"%s\" от %s"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_event_annex
+msgid "Event Annex"
+msgstr "Приложение"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_event_decision
+msgid "Event Decision"
+msgstr "Решение"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_event_question
+msgid "Event Question"
+msgstr "Вопрос"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Event Title..."
+msgstr "Заголовок мероприятия..."
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Event description..."
+msgstr "Описание мероприятия..."
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_view_all_event
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_event
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_calendar
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_tree
+msgid "Events"
+msgstr "Мероприятия"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Execute decision of event \"%s\""
+msgstr "Выполните решение мероприятия \"%s\""
+
+#. module: document_flow
+#: model:task.stage,name:document_flow.execution_task_stage_executed
+#: model:task.stage.route,name:document_flow.execution_task_stage_route_in_progress_executed
+#: model:task.stage.route,name:document_flow.execution_task_stage_route_to_do_executed
+msgid "Executed"
+msgstr "Выполнено"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type__execution
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__task_type__execution
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__type__execution
+#: model:task.type,name:document_flow.task_type_execution
+#, python-format
+msgid "Execution"
+msgstr "Исполнение"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__date_execution
+msgid "Execution Date"
+msgstr "Дата исполнения"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Execution decisions of event"
+msgstr "Исполнение решений мероприятия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__executor_ref
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__executor_ref
+#: model_terms:ir.ui.view,arch_db:document_flow.process_executor_view_form
+msgid "Executor"
+msgstr "Исполнитель"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__executor_ref_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__executor_ref_id
+msgid "Executor Id"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__executor_ref_type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__executor_ref_type
+msgid "Executor Type"
+msgstr ""
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/decisions_list.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__executor_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__executor_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__executor_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__executors
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+#, python-format
+msgid "Executors"
+msgstr "Исполнители"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Executors: %s"
+msgstr "Исполнители: %s"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__expression
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_auto_substitution_view_form
+msgid "Expression"
+msgstr "Выражение"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__state__finished
+#, python-format
+msgid "Finished"
+msgstr "Завершен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_follower_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_follower_ids
+msgid "Followers"
+msgstr "Подписчики"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_partner_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Подписчики (Партнеры)"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__activity_type_icon
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Шрифт для иконок"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__time_start
+msgid "From"
+msgstr "С"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Full name"
+msgstr "ФИО"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_task_task__role_executor_id
+msgid "Group"
+msgstr "Группа исполнителей"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_task_history_view_search
+msgid "Group by..."
+msgstr "Группировать по..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__has_message
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__has_message
+msgid "Has Message"
+msgstr "Есть сообщения"
+
+#. module: document_flow
+#: model:document_flow.auto_substitution,name:document_flow.document_flow_auto_substitution_head_project_office
+msgid "Head of project office"
+msgstr "Руководитель проектного офиса"
+
+#. module: document_flow
+#: model:ir.module.category,description:document_flow.module_category_document_flow_management
+msgid "Helps you manage documents"
+msgstr "Поможет управлять документами"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__hidden
+msgid "Hidden"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document_state__hidden
+msgid "Hide the state for selection."
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__id
+msgid "ID"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_exception_icon
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_exception_icon
+msgid "Icon"
+msgstr "Иконка"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__activity_exception_icon
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Иконка для индикации исключения"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__message_needaction
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Если отмечено, то сообщения требуют Вашего внимания"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__message_has_error
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__message_has_sms_error
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__message_has_error
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Если отмечено, то есть ошибки доставки"
+
+#. module: document_flow
+#: model:task.stage,name:document_flow.agreement_task_stage_in_progress
+#: model:task.stage,name:document_flow.execution_task_stage_in_progress
+#: model:task.stage,name:document_flow.review_task_stage_in_progress
+#: model:task.stage.route,name:document_flow.agreement_task_stage_route_to_do_in_progress
+#: model:task.stage.route,name:document_flow.execution_task_stage_route_to_do_in_progress
+#: model:task.stage.route,name:document_flow.review_task_stage_route_to_do_in_progress
+msgid "In progress"
+msgstr "В работу"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Informed"
+msgstr "Ознакомлен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__members
+msgid "Invited Members"
+msgstr "Приглашенные участники"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_is_follower
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_is_follower
+msgid "Is Follower"
+msgstr "Подписчик"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__keep_records_by_type
+msgid "Keep Records By Type"
+msgstr "Вести учет по типам"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__kind_id
+msgid "Kind"
+msgstr "Вид"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_type_view_tree
+msgid "Kind Types"
+msgstr "Типы вида"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__kind_ids
+msgid "Kinds"
+msgstr "Виды"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor____last_update
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history____last_update
+msgid "Last Modified on"
+msgstr "Дата последнего изменения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__write_uid
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__write_uid
+msgid "Last Updated by"
+msgstr "Автор последнего изменения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing_wizard_resume__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__write_date
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__write_date
+msgid "Last Updated on"
+msgstr "Дата последнего изменения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__location
+msgid "Location"
+msgstr "Место"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_main_attachment_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Основное вложение"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_management_committee
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__management_committee_id
+#: model_terms:ir.ui.view,arch_db:document_flow.management_committee_view_form
+msgid "Management Committee"
+msgstr "Управляющий комитет"
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_view_all_management_committee
+#: model:ir.ui.menu,name:document_flow.menu_management_committee
+#: model_terms:ir.ui.view,arch_db:document_flow.management_committee_view_tree
+msgid "Management Committees"
+msgstr "Управляющие комитеты"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__member_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__member_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__member_ids
+msgid "Members"
+msgstr "Участники"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_has_error
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_has_error
+msgid "Message Delivery error"
+msgstr "Ошибка доставки сообщения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_ids
+msgid "Messages"
+msgstr "Сообщения"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__task_sequence__mixed
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__task_sequence__mixed
+#, python-format
+msgid "Mixed"
+msgstr "Смешанно"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__model
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__model_id
+msgid "Model"
+msgstr "Модель"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__repeat_interval__month
+msgid "Months"
+msgstr "Ежемесячно"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__my_activity_date_deadline
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Срок исполнения моей активности"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_auto_substitution__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_annex__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_management_committee__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_role_executor__name
+msgid "Name"
+msgstr "Содержание"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_document.py:0
+#: code:addons/document_flow/models/document_flow_document.py:0
+#: code:addons/document_flow/models/document_flow_document.py:0
+#: code:addons/document_flow/models/document_flow_document.py:0
+#: code:addons/document_flow/models/document_flow_document.py:0
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:task.stage.route,name:document_flow.review_task_stage_route_review_to_do
+#, python-format
+msgid "New"
+msgstr "Новые"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_calendar_event_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_date_deadline
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_summary
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_summary
+msgid "Next Activity Summary"
+msgstr "Описание следующей активности"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_type_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_type_id
+msgid "Next Activity Type"
+msgstr "Тип следующей активности"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_document_flow_auto_substitutions_form
+msgid "No auto-substitution found. Let's create one!"
+msgstr "Автоподстановки не найдены. Давайте создадим первую!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_document_flow_document_kind_template_view_form
+msgid "No document kinds found. Let's create one!"
+msgstr "Виды документов не найдены. Давайте создадим первый!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_document_flow_documents_form
+msgid "No documents found. Let's create one!"
+msgstr "Документы не найдены. Давайте создадим первый!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_event
+msgid "No events found. Let's create one!"
+msgstr "Не найдено ни одного мероприятия. Давайте создадим одно!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_management_committee
+msgid "No management committee found. Let's create one!"
+msgstr "Управляющие комитеты не найдены. Давайте создадим первый!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_process_template
+msgid "No process templates found. Let's create one!"
+msgstr "Шаблоны процессов не найдены. Давайте создадим первый!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_process
+msgid "No processes found. Let's create one!"
+msgstr "Процессы не найдены. Давайте создадим первый!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_document_flow_role_executor_all_roles
+msgid "No roles of executors found. Let's create one!"
+msgstr "Роли исполнителей не найдены. Давайте создадим первую!"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_task
+msgid "No tasks found. Let's create one!"
+msgstr "Задачи не найдены. Давайте создадим"
+
+#. module: document_flow
+#: model:task.stage,name:document_flow.agreement_task_stage_not_agreed
+#: model:task.stage.route,name:document_flow.agreement_task_stage_route_in_progress_not_agreed
+#: model:task.stage.route,name:document_flow.agreement_task_stage_route_to_do_not_agreed
+msgid "Not agreed"
+msgstr "Не согласовано"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Not informed"
+msgstr "Не ознакомлен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_needaction_counter
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Номер действия"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_has_error_counter
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_has_error_counter
+msgid "Number of errors"
+msgstr "Количество ошибок"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__message_needaction_counter
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__message_has_error_counter
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event__state__on_approval
+msgid "On Approval"
+msgstr "На согласовании"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event__state__on_registration
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__state__on_registration
+#, python-format
+msgid "On Registration"
+msgstr "На регистрации"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__task_sequence__one_for_all
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__task_sequence__one_for_all
+#, python-format
+msgid "One For All"
+msgstr "Одну для всех"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_all_task
+msgid ""
+"Organize your tasks by dispatching them across the pipeline.\n"
+"                <br>\n"
+"                Collaborate efficiently by chatting in real-time or via email."
+msgstr ""
+"Управляйте Вашими задачами путем изменения статусов.\n"
+"                <br>\n"
+"                Для большей эффективности, сотрудничайте в чате в режиме реального времени или по электронной почте."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__organizer_id
+msgid "Organizer"
+msgstr "Организатор"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__parent_ref
+msgid "Parent"
+msgstr "Родитель"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__parent_id
+msgid "Parent Action"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__parent_ref_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__parent_ref_id
+msgid "Parent Id"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__parent_obj_ref
+#: model:ir.model.fields,field_description:document_flow.field_task_task__parent_obj_ref
+msgid "Parent Object"
+msgstr "Родительский объект"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__parent_id
+msgid "Parent Process"
+msgstr "Процесс-родитель"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__parent_ref_type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__parent_ref_type
+msgid "Parent Type"
+msgstr "Тип родителя"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__partner_id
+msgid "Partner"
+msgstr "Контрагент"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__period
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__period
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__period
+msgid "Period"
+msgstr "Срок (дней)"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_process
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__process_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__process_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__process_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__process_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__process_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__process_id
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_task_history_view_search
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Process"
+msgstr "Процесс"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__process_count
+msgid "Process Count"
+msgstr "Количество процессов"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_process_executor
+msgid "Process Executor"
+msgstr "Исполнитель процесса"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_process_template
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+msgid "Process Template"
+msgstr "Шаблон процесса"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+msgid "Process Template Title..."
+msgstr "Наименование..."
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_view_all_process_template
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_process_template
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_tree
+msgid "Process Templates"
+msgstr "Шаблоны процессов"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Process Title..."
+msgstr "Наименование..."
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_processes_from_template
+#: model:ir.actions.act_window,name:document_flow.action_view_all_process
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__child_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_template__process_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__process_ids
+#: model:ir.ui.menu,name:document_flow.document_flow_menu_process
+#: model_terms:ir.ui.view,arch_db:document_flow.process_template_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_tree
+msgid "Processes"
+msgstr "Процессы"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_processing.py:0
+#: model:ir.model,name:document_flow.model_document_flow_processing
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+#, python-format
+msgid "Processing"
+msgstr "Обработка"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Processing Chart"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__task_history_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_task_history_view_search
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_task_history_view_tree
+msgid "Processing History"
+msgstr "История обработки"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__processing_result
+msgid "Processing Result"
+msgstr "Результат выполнения"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_processing.py:0
+#, python-format
+msgid "Processing was break"
+msgstr "Обработка была прервана"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_processing.py:0
+#, python-format
+msgid "Processing was started"
+msgstr "Обработка запущена"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__properties
+msgid "Properties"
+msgstr "Свойства"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Protocol \"%s\" from %s"
+msgstr "Протокол \"%s\" от %s"
+
+#. module: document_flow
+#: model:ir.actions.report,name:document_flow.action_report_event_protocol
+msgid "Protocol (docx)"
+msgstr "Протокол (docx)"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Purchase Request"
+msgstr "Запрос на закупку"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__repeat_interval__quarter
+msgid "Quarter"
+msgstr "Ежеквартально"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_question_view_form
+msgid "Question"
+msgstr "Повестка"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_question_view_form
+msgid "Question..."
+msgstr "Повестка..."
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__question_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Questions"
+msgstr "Повестка"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_form
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_search
+#: model_terms:ir.ui.view,arch_db:document_flow.document_view_tree
+msgid "Registration Number"
+msgstr "Рег. номер"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Renumber Decisions"
+msgstr "Перенумеровать решения"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__repeat_interval
+msgid "Repeat Interval"
+msgstr "Интервал повторения"
+
+#. module: document_flow
+#: model:ir.ui.menu,name:document_flow.menu_replacement_employee
+msgid "Replacements Of The Employees"
+msgstr "Замены сотрудников"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__responsible_id
+msgid "Responsible"
+msgstr "Ответственный"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__activity_user_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__activity_user_id
+msgid "Responsible User"
+msgstr "Ответственный пользователь"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Responsible: %s"
+msgstr "Ответственный: %s"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/acknowledgement_form.py:0
+#, python-format
+msgid "Result"
+msgstr "Результат"
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_processing_wizard_resume
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_wizard_resume_view_form
+msgid "Resume"
+msgstr "Возобновить"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+msgid "Resume processing"
+msgstr "Возобновить обработку"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__return_on_action_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__return_on_process_id
+msgid "Return On"
+msgstr "Возврат на"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type__review
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__task_type__review
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__type__review
+#, python-format
+msgid "Review"
+msgstr "Ознакомление"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Review a protocol of event"
+msgstr "Ознакомление с протоколом мероприятия"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "Review with decision of event \"%s\""
+msgstr "Ознакомьтесь с решением мероприятия \"%s\""
+
+#. module: document_flow
+#: model:task.stage,name:document_flow.review_task_stage_reviewed
+#: model:task.stage.route,name:document_flow.review_task_stage_route_in_progress_reviewed
+msgid "Reviewed"
+msgstr "Ознакомлен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__reviewer_ref
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__reviewer_ref
+msgid "Reviewer"
+msgstr "Проверит"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__reviewer_ref_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__reviewer_ref_id
+msgid "Reviewer Id"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__reviewer_ref_type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__reviewer_ref_type
+msgid "Reviewer Type"
+msgstr ""
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Role"
+msgstr "Роль"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_role_executor
+msgid "Role Executors"
+msgstr "Роль исполнителя"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.role_executor_view_form
+msgid "Role Of Executors"
+msgstr "Роль исполнителей"
+
+#. module: document_flow
+#: model:ir.ui.menu,name:document_flow.menu_executor_role
+#: model_terms:ir.ui.view,arch_db:document_flow.role_executor_view_tree
+msgid "Roles Of Executors"
+msgstr "Роли исполнителей"
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_document_flow_role_executor_all_roles
+msgid "Roles of executors"
+msgstr "Роли исполнителей"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__message_has_sms_error
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.event_view_form
+msgid "Send for approve"
+msgstr "Отправить на согласование"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__type_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__visible_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__type_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action_executor__visible_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_state__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__visible_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process_executor__type_sequence
+msgid "Sequence"
+msgstr "Последовательность"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__task_sequence__sequentially
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__task_sequence__sequentially
+#, python-format
+msgid "Sequentially"
+msgstr "Последовательно"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__state__skipped
+#, python-format
+msgid "Skipped"
+msgstr "Пропущен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__speaker_ids
+msgid "Speakers"
+msgstr "Докладчики"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_wizard_resume_view_form
+msgid "Start Again"
+msgstr "Запустить сначала"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__start_condition
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__start_condition
+#: model_terms:ir.ui.view,arch_db:document_flow.action_view_form
+msgid "Start Condition"
+msgstr "Условие запуска"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__date_start
+msgid "Start Date"
+msgstr "Дата начала"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Start process"
+msgstr "Запустить процесс"
+
+#. module: document_flow
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_processing_view_form
+msgid "Start processing"
+msgstr "Запустить обработку"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process__state__started
+#, python-format
+msgid "Started"
+msgstr "Запущен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__state_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__process_state
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__state
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__state
+msgid "State"
+msgstr "Статус"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__state
+msgid "Status"
+msgstr "Статус"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__activity_state
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Статус, основанный на действиях\n"
+"Просрочено: срок оплаты уже прошел\n"
+"Сегодня: Дата активности - сегодня\n"
+"Запланировано: будущие мероприятия"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/decisions_list.py:0
+#: model:ir.model,name:document_flow.model_task_task
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_task_history__task_id
+#, python-format
+msgid "Task"
+msgstr "Задача"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__task_sequence
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__task_sequence
+msgid "Task Form Sequence"
+msgstr "Последовательность формирования задач"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_document_flow_task_history
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__task_history_ids
+msgid "Task History"
+msgstr "История обработки"
+
+#. module: document_flow
+#: model:res.groups,name:document_flow.group_document_flow_task_manager
+msgid "Task administrator"
+msgstr "Администратор задач"
+
+#. module: document_flow
+#: model_terms:ir.actions.act_window,help:document_flow.action_view_task_id
+msgid ""
+"Task management allows you to manage the pipeline of your tasks efficiently. You can track\n"
+"                progress, discuss on tasks, attach documents, etc."
+msgstr ""
+"Управление задачами позволяет Вам эффективно управлять потоком ваших задач. Вы можете отслеживать\n"
+"                состояние, обсуждения в задачах, вложения и т.д."
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Task was canceled by the initiator."
+msgstr "Задача была отменена инициатором."
+
+#. module: document_flow
+#: model:ir.actions.act_window,name:document_flow.action_view_all_task
+#: model:ir.actions.act_window,name:document_flow.action_view_task_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__tasks_count
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__active_task_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__task_ids
+#: model:ir.ui.menu,name:document_flow.menu_task_management
+#: model_terms:ir.ui.view,arch_db:document_flow.process_view_form
+msgid "Tasks"
+msgstr "Задачи"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#, python-format
+msgid "Tasks were created for the following user(s)"
+msgstr "Задачи были созданы для пользователя(-ей)"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__template_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__template_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__template_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__template_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__template_id
+msgid "Template"
+msgstr "Шаблон"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_processing__template_id_domain
+msgid "Template Domain"
+msgstr ""
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_processing.py:0
+#, python-format
+msgid "Template is not set."
+msgstr "Не задан шаблон."
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_event.py:0
+#, python-format
+msgid "The process of agreement a protocol were started"
+msgstr "Процесс ознакомления с протоколом был запущен"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_question__time_end
+msgid "To"
+msgstr "По"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__deadline_type__to_date
+msgid "To Date"
+msgstr "К дате"
+
+#. module: document_flow
+#: model:task.stage,name:document_flow.agreement_task_stage_to_do
+#: model:task.stage,name:document_flow.execution_task_stage_to_do
+#: model:task.stage,name:document_flow.review_task_stage_to_do
+msgid "To do"
+msgstr ""
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action__type_sequence__together_with_the_previous
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_action_executor__type_sequence__together_with_the_previous
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_process_executor__type_sequence__together_with_the_previous
+#, python-format
+msgid "Together with the previous"
+msgstr "Вместе с предыдущим"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_action__type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind__type_id
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_type__name
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__task_type
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_process__type
+msgid "Type"
+msgstr "Тип задачи"
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__activity_exception_decoration
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_template__type_ids
+#: model_terms:ir.ui.view,arch_db:document_flow.document_flow_document_kind_template_view_form
+msgid "Types"
+msgstr "Типы"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/models/document_flow_process.py:0
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document_kind_accessibility_setting__user_ref
+#: model:res.groups,name:document_flow.group_document_flow_user
+#, python-format
+msgid "User"
+msgstr "Пользователь"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_document__website_message_ids
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields,help:document_flow.field_document_flow_document__website_message_ids
+#: model:ir.model.fields,help:document_flow.field_document_flow_event__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__repeat_interval__week
+msgid "Weeks"
+msgstr "Еженедельно"
+
+#. module: document_flow
+#. odoo-python
+#: code:addons/document_flow/report/event_protocol.py:0
+#, python-format
+msgid "Were present:"
+msgstr "Присутствовали:"
+
+#. module: document_flow
+#: model:ir.model.fields,field_description:document_flow.field_document_flow_event_decision__number_days
+msgid "Within"
+msgstr "В течение (дней)"
+
+#. module: document_flow
+#: model:ir.model.fields.selection,name:document_flow.selection__document_flow_event_decision__repeat_interval__year
+msgid "Years"
+msgstr "Ежегодно"
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_report_document_flow_event_acknowledgement_form
+msgid "document_flow.event_acknowledgement_form"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_report_document_flow_event_decisions_list
+msgid "document_flow.event_decisions_list"
+msgstr ""
+
+#. module: document_flow
+#: model:ir.model,name:document_flow.model_report_document_flow_event_protocol
+msgid "document_flow.event_protocol"
+msgstr ""

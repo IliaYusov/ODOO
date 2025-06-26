@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="hr_timesheet_menu" name="Timesheets" sequence="75" groups="hr_timesheet_group_user">
+
+        <menuitem id="hr_timesheet_menu_tracking" name="Timesheets" sequence="5">
+            <menuitem id="hr_timesheet_menu_activity_mine" name="My Timesheets" sequence="1"
+                      action="action_hr_timesheet_account_analytic_line_form_mine" groups="hr_timesheet_group_user"/>
+            <menuitem id="hr_timesheet_menu_activity_all" name="All Timesheets" sequence="2"
+                      action="action_hr_timesheet_account_analytic_line_form_all" groups="hr_timesheet_group_manager"/>
+        </menuitem>
+    </menuitem>
+
+    <record id="project_mngmnt.project_menu_reporting" model="ir.ui.menu">
+        <field name="active" eval="True"/>
+    </record>
+
+    <menuitem id="project_menu_reporting_timesheets" parent="project_mngmnt.project_menu_reporting" name="Timesheets"
+              sequence="50">
+        <menuitem id="project_menu_reporting_timesheets_by_employee" name="Timesheets By Employee" sequence="1"
+                  action="hr_timesheet_report_analysis_action_by_employee"
+                  groups="project_mngmnt.project_group_project_manager"/>
+    </menuitem>
+
+    <menuitem id="project_menu_configuration_operative_accounting" parent="project_mngmnt.project_menu_configuration"
+              name="Operative Accounting" sequence="60">
+        <menuitem id="project_menu_configuration_operative_accounting_account_methods"
+                  name="Employee Rate Account Methods" sequence="1" action="project_account_method_employee_rate_action"
+                  groups="base.group_no_one"/>
+    </menuitem>
+</odoo>

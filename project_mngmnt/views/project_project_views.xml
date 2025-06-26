@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_search" model="ir.ui.view">
+        <field name="name">project.project.search</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <search string="Projects">
+                <field name="name" string="Project"
+                       filter_domain="['|', ('code', 'ilike', self), ('display_name', 'ilike', self)]"/>
+                <field name="partner_id" string="Customer"
+                       filter_domain="['|', ('partner_id.name', 'ilike', self), ('partner_id.vat', 'ilike', self)]"/>
+                <separator/>
+                <filter name="my_favorites" string="My Favorites" domain="[('favorite_user_ids', 'in', uid)]"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="project_project_view_tree" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" groups="base.group_no_one" optional="hide"/>
+                <field name="code" optional="show"/>
+                <field name="display_name" string="Name" class="fw-bold"/>
+                <field name="partner_id"/>
+                <field name="date_start" string="Start Date" widget="daterange"
+                       options="{'related_end_date': 'date_end'}"/>
+                <field name="date_end" string="End Date" widget="daterange"
+                       options="{'related_start_date': 'date_start'}"/>
+                <field name="project_manager_id" widget="many2one_avatar_employee"
+                       options="{'relation': 'hr.employee.public'}"/>
+                <field name="company_id" groups="base.group_multi_company"
+                       options="{'no_create_edit': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="task_task_action_view_from_project" model="ir.actions.act_window">
+        <field name="name">Milestones</field>
+        <field name="res_model">task.task</field>
+        <field name="view_mode">kanban,tree,form,calendar</field>
+        <field name="domain">
+            [
+                ('parent_ref_type', '=', 'project.project'),
+                ('parent_ref_id', '=', active_id),
+                ('parent_id', '!=', False)
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_parent_ref_type': 'project.project',
+                'default_parent_ref_id': active_id
+            }
+        </field>
+        <field name="help" type="html">
+            <p>
+                Task management allows you to manage the pipeline of your tasks efficiently. You can track
+                progress, discuss on tasks, attach documents, etc.
+            </p>
+        </field>
+    </record>
+
+    <record id="task_task_action_view_milestones" model="ir.actions.act_window">
+        <field name="name">Milestones</field>
+        <field name="res_model">task.task</field>
+        <field name="view_mode">kanban,tree,form,calendar</field>
+        <field name="domain">
+            [
+                ('parent_ref_type', '=', 'project.project'),
+                ('parent_ref_id', '=', active_id),
+                ('parent_id', '=', False)
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_parent_ref_type': 'project.project',
+                'default_parent_ref_id': active_id
+            }
+        </field>
+        <field name="help" type="html">
+            <p>
+                Track major progress points that must be reached to achieve success.
+            </p>
+        </field>
+    </record>
+
+    <record id="task_task_action_view_projects_tasks" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">task.task</field>
+        <field name="view_mode">kanban,tree,calendar,form</field>
+        <field name="domain">
+            [
+                ('parent_ref_type', '=', 'project.project')
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_parent_ref_type': 'project.project',
+                'search_default_open_tasks': 1
+            }
+        </field>
+        <field name="search_view_id" ref="task.task_task_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tasks found. Let's create one!
+            </p>
+            <p>
+                Organize your tasks by dispatching them across the pipeline.
+                <br/>
+                Collaborate efficiently by chatting in real-time or via email.
+            </p>
+        </field>
+    </record>
+
+    <record id="project_project_view_form" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet string="Project">
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" icon="fa-tasks" type="action"
+                                name="%(task_task_action_view_milestones)d">
+                            <field string="Milestones" name="milestone_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="id" invisible="1"/>
+                    <field name="active" invisible="1"/>
+                    <field name="company_id" invisible="1" groups="!base.group_multi_company"/>
+                    <field name="can_edit" invisible="1"/>
+                    <field name="favorite_user_ids" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1 class="d-flex flex-row">
+                            <field name="is_favorite" nolabel="1" widget="boolean_favorite" class="me-2"
+                               options="{'autosave': False}"/>
+                            <field name="code" attrs="{'readonly':[('can_edit', '=', False)]}"
+                                   placeholder="Project Code"/>/
+                            <field name="name" class="o_text_overflow" placeholder="e.g. Office Party"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id" widget="res_partner_many2one"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                            <field name="company_id" groups="base.group_multi_company"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="project_manager_id" widget="many2one_avatar_employee"
+                                   options="{'relation': 'hr.employee.public'}"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                            <label for="date_start"/>
+                            <div name="dates" class="o_row">
+                                <field name="date_start" string="Planned Dates"
+                                       attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                                <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon"
+                                   title="Arrow"/>
+                                <field name="date_end" attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description" options="{'resizable': false}"
+                                   placeholder="Project description..."
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        </page>
+                        <page name="project_team" string="Project Team">
+                            <field name="project_member_ids" mode="tree,kanban"
+                                   attrs="{'readonly': [('can_edit', '=', False)]}"
+                                   context="{
+                                       'default_project_id': active_id,
+                                       'default_date_start': date_start,
+                                       'default_date_end': date_end
+                                   }">
+                                <tree editable="bottom">
+                                    <field name="employee_id" widget="many2one_avatar_employee"
+                                           options="{'relation': 'hr.employee.public'}"/>
+                                    <field name="role_id"/>
+                                    <field name="date_start" string="Start Date Of Participation"/>
+                                    <field name="date_end" string="End Date Of Participation"/>
+                                    <field name="company_id" invisible="1"/>
+                                </tree>
+                                <kanban>
+                                    <field name="id"/>
+                                    <field name="project_id"/>
+                                    <field name="role_id"/>
+                                    <field name="employee_id" widget="many2one_avatar_employee"
+                                           options="{'relation': 'hr.employee.public'}"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="company_id"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_card oe_kanban_global_click">
+                                                <div class="o_kanban_card_content d-flex">
+                                                    <div>
+                                                        <img t-att-src="kanban_image('hr.employee.public', 'image_1920', record.employee_id.raw_value)"
+                                                             height="40" width="40"
+                                                             class="oe_avatar oe_kanban_avatar_smallbox mb0"
+                                                             alt="Avatar"/>
+                                                    </div>
+                                                    <div class="oe_kanban_details d-flex flex-column ms-3">
+                                                        <strong class="o_kanban_record_title oe_partner_heading">
+                                                            <t t-esc="record.employee_id.value"/>
+                                                        </strong>
+                                                        <div class="d-flex align-items-baseline text-break">
+                                                            <i class="fa fa-user me-1" role="img"
+                                                               aria-label="Role" title="Role"/>
+                                                            <t t-esc="record.role_id.value"/>
+                                                        </div>
+                                                    </div>
+                                                    <a t-if="!read_only_mode" type="delete" class="text-danger">
+                                                        <i class="fa fa-times" title="Delete"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page name="settings" string="Settings" groups="project_mngmnt.project_group_manager">
+                            <group>
+                                <group>
+                                    <field name="analytic_account_id" context="{'default_partner_id': partner_id}"
+                                           invisible="1" groups="analytic.group_analytic_accounting"
+                                           attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group name="timesheet_management" string="Timesheets Management" col="1"
+                                       class="row mt16 o_settings_container" invisible="1"/>
+                                <group/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_project_view_kanban" model="ir.ui.view">
+        <field name="name">project.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_project_kanban o_emphasize_colors"
+                    type="object" sample="1" default_order="is_favorite desc, name, id" default_group_by="stage_id"
+                    quick_create="false" group_create="false" group_delete="false">
+                <field name="display_name"/>
+                <field name="partner_id"/>
+                <field name="color"/>
+                <field name="task_count"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="analytic_account_id"/>
+                <field name="tag_ids"/>
+                <field name="is_favorite"/>
+                <field name="favorite_user_ids"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{kanban_color(record.color.raw_value)} oe_kanban_global_click o_has_icon oe_kanban_content oe_kanban_card">
+                            <div class="o_project_kanban_main">
+                                <field name="is_favorite" nolabel="1" widget="boolean_favorite"/>
+                                <div class="o_kanban_card_content mw-100">
+                                    <div class="o_kanban_primary_left">
+                                        <div class="o_primary">
+                                            <span class="o_text_overflow" t-att-title="record.display_name.value">
+                                                <t t-esc="record.display_name.value"/>
+                                            </span>
+                                            <span class="o_text_overflow text-muted" t-if="record.partner_id.value">
+                                                <span class="fa fa-user me-2" aria-label="Customer"
+                                                      title="Customer"/>
+                                                <t t-esc="record.partner_id.value"/>
+                                            </span>
+                                            <div t-if="record.date_start.raw_value or record.date_end.raw_value"
+                                                 class="text-muted o_row">
+                                                <span class="fa fa-clock-o me-2" title="Dates"/>
+                                                <field name="date_start"/>
+                                                <i t-if="record.date_end.raw_value and record.date_start.raw_value"
+                                                   class="fa fa-long-arrow-right mx-2 oe_read_only"
+                                                   aria-label="Arrow icon" title="Arrow"/>
+                                                <field name="date_end"/>
+                                            </div>
+                                            <field name="tag_ids" widget="many2many_tags"
+                                                   options="{'color_field': 'color'}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_bottom mt-3">
+                                <div class="oe_kanban_bottom_left">
+                                    <div class="o_project_kanban_boxes d-flex align-items-baseline">
+                                        <a class="o_project_kanban_box" name="action_open_tasks" type="object">
+                                            <div>
+                                                <span class="o_value">
+                                                    <t t-esc="record.task_count.value"/> Tasks
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_bottom_right">
+                                    <field t-if="record.project_manager_id.raw_value" name="project_manager_id"
+                                           widget="many2one_avatar"
+                                           options="{'relation': 'hr.employee.public'}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="project_project_view_calendar" model="ir.ui.view">
+        <field name="name">project.project.calendar</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_start" date_stop="date_end" string="Projects" mode="month"
+                      scales="month,year" event_open_popup="true" quick_add="false" color="color">
+                <field name="partner_id" attrs="{'invisible': [('partner_id', '=', False)]}"/>
+                <field name="project_manager_id" widget="many2one_avatar_employee"
+                       options="{'relation': 'hr.employee.public'}"
+                       attrs="{'invisible': [('project_manager_id', '=', False)]}"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"
+                       attrs="{'invisible': [('tag_ids', '=', [])]}"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="project_project_action" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">kanban,tree,form,calendar</field>
+        <field name="search_view_id" ref="project_project_view_search"/>
+    </record>
+</odoo>

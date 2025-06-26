@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_tag_view_tree" model="ir.ui.view">
+        <field name="name">project.tag.tree</field>
+        <field name="model">project.tag</field>
+        <field name="arch" type="xml">
+            <tree string="Tags" editable="bottom" sample="1" multi_edit="1" default_order="name">
+                <field name="name"/>
+                <field name="color" widget="color_picker" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_tag_action" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.tag</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

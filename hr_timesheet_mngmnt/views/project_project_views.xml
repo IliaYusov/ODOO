@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_timesheet_report_analysis_action_from_project" model="ir.actions.act_window">
+        <field name="name">Timesheets</field>
+        <field name="res_model">hr.timesheet.report.analysis</field>
+        <field name="view_mode">tree,pivot,graph</field>
+        <field name="domain">
+            [
+                ('project_id', '=', active_id)
+            ]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p>
+            <p>
+                Analyze the projects and tasks on which your employees spend their time.
+            </p>
+        </field>
+    </record>
+
+    <record id="task_task_report_analysis_action_from_project" model="ir.actions.act_window">
+        <field name="name">Timesheets</field>
+        <field name="res_model">task.task.report.analysis</field>
+        <field name="view_mode">pivot,graph</field>
+        <field name="domain">
+            [
+                ('project_id', '=', active_id)
+            ]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p>
+            <p>
+                Analyze the projects and tasks on which your employees spend their time.
+            </p>
+        </field>
+    </record>
+
+    <record id="project_project_view_form_inherit_hr_timesheet" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.hr.timesheet</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="inside">
+                <field name="allow_timesheets" invisible="1"/>
+                <field name="is_project_overtime" invisible="1"/>
+            </xpath>
+            <xpath expr="//div[@name='dates']" position="after">
+                <label for="planned_hours" groups="hr_timesheet_mngmnt.hr_timesheet_group_user"/>
+                <div name="planned_time" class="o_row" groups="hr_timesheet_mngmnt.hr_timesheet_group_user">
+                    <field name="planned_hours" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                    <button name="action_recalc_planned_hours_by_milestones" type="object"
+                            string="Recalculate By Milestones" class="btn-link mb-1 px-0" icon="fa-refresh"
+                            attrs="{'invisible': ['|', ('milestone_count', '=', 0), ('can_edit', '=', False)]}"
+                            groups="project_mngmnt.project_group_project_manager"/>
+                </div>
+            </xpath>
+            <xpath expr="//button[@name='%(project_mngmnt.task_task_action_view_milestones)d']" position="after">
+                <button class="oe_stat_button" type="action" icon="fa-clock-o text-success"
+                        name="%(hr_timesheet_report_analysis_action_from_project)d"
+                        attrs="{'invisible': ['|', ('allow_timesheets', '=', False), ('is_project_overtime', '=', True)]}"
+                        groups="hr_timesheet_mngmnt.hr_timesheet_group_user">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="total_hours_spent" widget="statinfo" nolabel="1"/>
+                            <span> / </span>
+                            <field name="planned_hours" widget="statinfo" nolabel="1"/>
+                        </span>
+                        <span class="o_stat_text">Timesheets</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button" type="action" icon="fa-clock-o text-danger"
+                        name="%(hr_timesheet_report_analysis_action_from_project)d"
+                        attrs="{'invisible': ['|', ('allow_timesheets', '=', False), ('is_project_overtime', '=', False)]}"
+                        groups="hr_timesheet_mngmnt.hr_timesheet_group_user">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="total_hours_spent" widget="statinfo" nolabel="1"/>
+                            <span> / </span>
+                            <field name="planned_hours" widget="statinfo" nolabel="1"/>
+                        </span>
+                        <span class="o_stat_text">Timesheets</span>
+                    </div>
+                </button>
+                <button class="oe_stat_button" type="action" icon="fa-clock-o"
+                        name="%(task_task_report_analysis_action_from_project)d"
+                        string="Timesheets And Planning"
+                        attrs="{'invisible': [('allow_timesheets', '=', False)]}"
+                        groups="hr_timesheet_mngmnt.hr_timesheet_group_manager">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Planning</span>
+                    </div>
+                </button>
+            </xpath>
+            <xpath expr="//notebook/page[@name='settings']/group/group/field[@name='analytic_account_id']" position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='settings']/group/group[@name='timesheet_management']"
+                   position="attributes">
+                <attribute name="invisible">0</attribute>
+            </xpath>
+            <xpath expr="//notebook/page[@name='settings']/group/group[@name='timesheet_management']" position="inside">
+                <div>
+                    <div class="o_setting_box mt-4" id="timesheet_settings">
+                        <div class="o_setting_left_pane">
+                            <field name="allow_timesheets" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="allow_timesheets" string="Timesheets"/>
+                            <div class="text-muted">
+                                Log time on tasks
+                            </div>
+                        </div>
+                    </div>
+                    <div class="o_setting_box mt-4" id="account_employee_rate_settings"
+                         attrs="{'invisible': [('allow_timesheets', '=', False)]}">
+                        <field name="currency_id" invisible="1"/>
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <div class="row mt16">
+                                    <label for="account_method_employee_rate_id" class="col-lg-3 o_light_label"/>
+                                    <field name="account_method_employee_rate_id"
+                                           attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                </div>
+                                <div class="row mt16" attrs="{'invisible': [('account_method_employee_rate_id', '!=', %(hr_timesheet_mngmnt.project_account_method_employee_rate_avg_project)d)]}">
+                                    <label for="hourly_cost" class="col-lg-3 o_light_label"/>
+                                    <field name="hourly_cost" widget="monetary"
+                                           attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

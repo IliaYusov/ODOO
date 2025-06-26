@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_inherit_hr_timesheet_nkk" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.hr.timesheet.nkk</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="hr_timesheet_mngmnt.project_project_view_form_inherit_hr_timesheet"/>
+        <field name="arch" type="xml">
+<!--            Кривой XPATH из-за факта наличия 2-х разных кнопок для цветной иконки-->
+            <xpath expr="//button[@icon='fa-clock-o text-success']//div//span[hasclass('o_stat_value')]"
+                   position="replace">
+                <span class="o_stat_value">
+                    <field name="planned_hours" widget="statinfo" nolabel="1"/>
+                    <span>/</span>
+                    <field name="total_hours_spent" widget="statinfo" nolabel="1"/>
+                </span>
+            </xpath>
+            <xpath expr="//button[@icon='fa-clock-o text-danger']//div//span[hasclass('o_stat_value')]"
+                   position="replace">
+                <span class="o_stat_value">
+                    <field name="planned_hours" widget="statinfo" nolabel="1"/>
+                    <span>/</span>
+                    <field name="total_hours_spent" widget="statinfo" nolabel="1"/>
+                </span>
+            </xpath>
+        </field>
+    </record>
+</odoo>

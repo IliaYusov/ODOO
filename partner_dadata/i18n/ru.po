@@ -1,0 +1,228 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_dadata
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-30 20:44+0000\n"
+"PO-Revision-Date: 2024-11-30 20:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "\" already exists."
+msgstr "\" уже существует."
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "\" not found."
+msgstr "\" не найден."
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid ""
+"<span class=\"o_form_label o_td_label\" name=\"address_name\">\n"
+"                            <b attrs=\"{'invisible': [('is_load', '=', False)]}\">Address</b>\n"
+"                        </span>"
+msgstr ""
+"<span class=\"o_form_label o_td_label\" name=\"address_name\">\n"
+"                            <b attrs=\"{'invisible': [('is_load', '=', False)]}\">Адрес</b>\n"
+"                        </span>"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "A partner with Tax ID \""
+msgstr "Организация с ИНН \""
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "A partner with the same Tax ID \""
+msgstr "Организация с таким же ИНН \""
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "Cancel"
+msgstr "Отмена"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__city
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "City"
+msgstr "Город"
+
+#. module: partner_dadata
+#: model:ir.model,name:partner_dadata.model_res_config_settings
+msgid "Config Settings"
+msgstr "Настройки"
+
+#. module: partner_dadata
+#: model:ir.model,name:partner_dadata.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__country_id
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "Country"
+msgstr "Страна"
+
+#. module: partner_dadata
+#. odoo-javascript
+#. odoo-python
+#: code:addons/partner_dadata/static/src/views/kanban/partner_kanban_controller.js:0
+#: code:addons/partner_dadata/wizard/partner_load_info.py:0
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+#, python-format
+msgid "Create Partner"
+msgstr "Создать организацию"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__full_name
+msgid "Full Name"
+msgstr "Полное наименование"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "Get Info"
+msgstr "Получить информацию"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__id
+msgid "ID"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__is_exists
+msgid "Is Exists"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__is_load
+msgid "Is Load"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: partner_dadata
+#. odoo-javascript
+#: code:addons/partner_dadata/static/src/views/kanban/partner_kanban_controller.xml:0
+#, python-format
+msgid "Load Partner"
+msgstr "Загрузить организацию"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__name
+msgid "Name"
+msgstr "Краткое наименование"
+
+#. module: partner_dadata
+#. odoo-python
+#: code:addons/partner_dadata/models/res_partner.py:0
+#, python-format
+msgid "Organization not found. Please check Tax ID."
+msgstr "Организация не найдена. Пожалуйста, проверьте ИНН."
+
+#. module: partner_dadata
+#. odoo-python
+#: code:addons/partner_dadata/wizard/partner_load_info.py:0
+#, python-format
+msgid "Partner %s was created"
+msgstr "Организация %s была успешно создана"
+
+#. module: partner_dadata
+#: model:ir.model,name:partner_dadata.model_partner_load_info
+msgid "Partner Load Info By DaData"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_res_config_settings__secret
+msgid "Secret"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__street
+msgid "Street"
+msgstr "Улица"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "Street..."
+msgstr "Улица..."
+
+#. module: partner_dadata
+#. odoo-python
+#: code:addons/partner_dadata/wizard/partner_load_info.py:0
+#, python-format
+msgid "Success"
+msgstr "Успех"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__vat
+msgid "Tax ID"
+msgstr "ИНН"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.res_partner_view_form_inherit_partner_dadata
+msgid "This will update partner information based on DaData information."
+msgstr "Обновить информацию на основании данных предоставляемых DaData."
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_res_config_settings__token
+msgid "Token"
+msgstr ""
+
+#. module: partner_dadata
+#: model:ir.actions.server,name:partner_dadata.res_partner_action_update_info_by_vat
+#: model_terms:ir.ui.view,arch_db:partner_dadata.res_partner_view_form_inherit_partner_dadata
+msgid "Update Info By Vat"
+msgstr "Обновить информацию по ИНН"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.partner_load_info_view_form
+msgid "ZIP"
+msgstr "Индекс"
+
+#. module: partner_dadata
+#: model:ir.model.fields,field_description:partner_dadata.field_partner_load_info__zip
+msgid "Zip"
+msgstr "Индекс"
+
+#. module: partner_dadata
+#: model_terms:ir.ui.view,arch_db:partner_dadata.res_partner_view_form_inherit_partner_dadata
+msgid "e.g. 9701160337"
+msgstr "Например, 9701160337"

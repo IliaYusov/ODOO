@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_budget_project_overdue_report_view_tree_inherit_nkk" model="ir.ui.view">
+        <field name="name">project.budget.project.overdue.report.tree.inherit.nkk</field>
+        <field name="model">project.budget.project.overdue.report</field>
+        <field name="inherit_id" ref="project_budget.project_budget_project_overdue_report_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='key_account_manager_id']" position="before">
+                <field name="project_supervisor_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_inherit_crm" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.crm</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="opportunity_id" attrs="{'readonly': [('can_edit', '=', False)]}"
+                       groups="project_budget.project_budget_users,project_budget.project_budget_admin"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_crossovered_budget_project_manager,crossovered.budget.project.manager,account_budget_mngmnt.model_crossovered_budget,project_mngmnt.project_group_project_manager,1,1,1,1
+access_crossovered_budget_line_project_manager,crossovered.budget.line.project.manager,account_budget_mngmnt.model_crossovered_budget_line,project_mngmnt.project_group_project_manager,1,1,1,1
+access_crossovered_budget_line_amount_project_manager,crossovered.budget.line.amount.project.manager,account_budget_mngmnt.model_crossovered_budget_line_amount,project_mngmnt.project_group_project_manager,1,1,1,1

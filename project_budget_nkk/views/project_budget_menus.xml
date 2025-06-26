@@ -1,0 +1,26 @@
+<odoo>
+    <menuitem id="crm_menu_holding_customers" parent="project_budget.project_budget_menu" name="Holding Customers"
+              sequence="35" action="crm_holding_customer_report_action"/>
+
+    <menuitem id="crm_menu_configuration_technological_directions"
+              parent="project_budget.menu_project_budget_configuration"
+              name="Technological Directions" sequence="1000" action="crm_lead_technological_direction_action"/>
+
+    <menuitem id="crm_menu_configuration_project_types" parent="project_budget.menu_project_budget_configuration"
+              name="Project Types" sequence="1001" action="crm_lead_project_type_action"/>
+
+    <menuitem id="crm_menu_project_supervisors" parent="project_budget.project_budget_catalogs"
+              name="Project Curators" sequence="0" action="show_project_supervisor"/>
+
+    <menuitem id="crm_menu_project_curators_access" parent="project_budget.project_budget_access"
+              name="Project Curators Access" action="show_comercial_budget_spec_supervisor_access"
+              groups="project_budget.project_budget_admin"/>
+
+    <menuitem id="crm_menu_configuration_budget_management" parent="project_budget.menu_project_budget_configuration"
+              name="Budget Management" sequence="55">
+        <menuitem id="crm_menu_configuration_budget_management_budget_items" name="Budget Items" sequence="1"
+                  action="account_budget_mngmnt.account_budget_item_action" groups="account.group_account_manager"/>
+        <menuitem id="crm_menu_configuration_budget_management_account_types" name="Account Types" sequence="2"
+                  action="account_budget_mngmnt.res_partner_bank_type_action" groups="account.group_account_manager"/>
+    </menuitem>
+</odoo>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_timesheet_report_analysis_view_search" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.search</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <search string="Timesheet">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="project_id"/>
+                <field name="milestone_id"/>
+                <field name="task_id"/>
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="manager_id"/>
+                <filter name="mine" string="My Timesheets" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="month" string="Date" date="date"/>
+                <group expand="0" string="Group By">
+                    <filter string="Project" name="group_by_project" domain="[]" context="{'group_by': 'project_id'}"/>
+                    <filter string="Task" name="group_by_task" domain="[]" context="{'group_by': 'task_id'}"/>
+                    <filter string="Date" name="group_by_date" domain="[]" context="{'group_by': 'date'}"
+                            help="Timesheet by Date"/>
+                    <filter string="Department" name="group_by_department" domain="[]"
+                            context="{'group_by': 'department_id'}"/>
+                    <filter string="Manager" name="group_by_manager" domain="[]" context="{'group_by': 'manager_id'}"/>
+                    <filter string="Employee" name="group_by_employee" domain="[]"
+                            context="{'group_by': 'employee_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_view_tree" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.tree</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="task_id"/>
+                <field name="unit_amount" optional="show" sum="Total"
+                       decoration-danger="unit_amount &gt; 8 or unit_amount &lt; 0"
+                       decoration-muted="unit_amount == 0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_view_pivot" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.pivot</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <pivot string="Timesheets" sample="1" disable_linking="True">
+                <field name="employee_id" type="row"/>
+                <field name="date" interval="month" type="col"/>
+                <field name="amount" string="Timesheet Costs"/>
+                <field name="unit_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_view_graph" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.graph</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <graph string="Timesheets" sample="1" disable_linking="True">
+                <field name="employee_id" type="row"/>
+                <field name="amount" string="Timesheet Costs"/>
+                <field name="unit_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_view_pivot_by_employee" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.pivot.by.employee</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <pivot string="Timesheets" sample="1">
+                <field name="employee_id" type="row"/>
+                <field name="date" interval="month" type="col"/>
+<!--                <field name="amount" string="Timesheet Costs"/>-->
+                <field name="unit_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_view_graph_by_employee" model="ir.ui.view">
+        <field name="name">hr.timesheet.report.analysis.graph.by.employee</field>
+        <field name="model">hr.timesheet.report.analysis</field>
+        <field name="arch" type="xml">
+            <graph string="Timesheets" sample="1">
+                <field name="employee_id" type="row"/>
+<!--                <field name="amount" string="Timesheet Costs"/>-->
+                <field name="unit_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_action_by_employee" model="ir.actions.act_window">
+        <field name="name">Timesheets By Employee</field>
+        <field name="res_model">hr.timesheet.report.analysis</field>
+        <field name="domain">[('project_id', '!=', False)]</field>
+        <field name="search_view_id" ref="hr_timesheet_report_analysis_view_search"/>
+        <field name="view_mode">pivot,graph</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No data yet!
+            </p>
+            <p>
+                Analyze the projects and tasks on which your employees spend their time.
+                <br/>
+                Evaluate which part is billable and what costs it represents.
+            </p>
+        </field>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_action_view_pivot_by_employee" model="ir.actions.act_window.view">
+        <field name="view_mode">pivot</field>
+        <field name="sequence" eval="3"/>
+        <field name="view_id" ref="hr_timesheet_report_analysis_view_pivot_by_employee"/>
+        <field name="act_window_id" ref="hr_timesheet_report_analysis_action_by_employee"/>
+    </record>
+
+    <record id="hr_timesheet_report_analysis_action_view_graph_by_employee" model="ir.actions.act_window.view">
+        <field name="view_mode">graph</field>
+        <field name="sequence" eval="5"/>
+        <field name="view_id" ref="hr_timesheet_report_analysis_view_graph_by_employee"/>
+        <field name="act_window_id" ref="hr_timesheet_report_analysis_action_by_employee"/>
+    </record>
+</odoo>

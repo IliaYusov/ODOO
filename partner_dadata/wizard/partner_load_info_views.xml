@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="partner_load_info_view_form" model="ir.ui.view">
+        <field name="name">partner.load.info.form</field>
+        <field name="model">partner.load.info</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="alert alert-danger oe_edit_only" role="alert" invisible="not context.get('show_alert', False)"
+                     attrs="{'invisible': [('is_load', '=', True)]}">
+                    A partner with Tax ID "<field name="vat" readonly="1"/>" not found.
+                </div>
+                <div class="alert alert-danger oe_edit_only" role="alert" invisible="not context.get('show_alert', False)"
+                     attrs="{'invisible': [('is_exists', '=', False)]}">
+                    A partner with the same Tax ID "<field name="vat" readonly="1"/>" already exists.
+                </div>
+                <field name="is_load" invisible="1"/>
+                <field name="is_exists" invisible="1"/>
+                <group>
+                    <field name="vat"/>
+                </group>
+                <div class="oe_title mb24">
+                    <h1>
+                        <field name="name" class="text-break" attrs="{'invisible': [('is_load', '=', False)]}"/>
+                    </h1>
+                </div>
+                <group>
+                    <field name="full_name" attrs="{'invisible': [('is_load', '=', False)]}"/>
+                </group>
+                <group>
+                    <group>
+                        <span class="o_form_label o_td_label" name="address_name">
+                            <b attrs="{'invisible': [('is_load', '=', False)]}">Address</b>
+                        </span>
+                        <div class="o_address_format">
+                            <field name="street" placeholder="Street..." class="o_address_street"
+                                   attrs="{'invisible': [('is_load', '=', False)]}"/>
+                            <field name="city" placeholder="City" class="o_address_city"
+                                   attrs="{'invisible': [('is_load', '=', False)]}"/>
+                            <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                   attrs="{'invisible': [('is_load', '=', False)]}"/>
+                            <div name="partner_address_country" class="d-flex justify-content-between">
+                                <field name="country_id" placeholder="Country" class="o_address_country"
+                                       options="{'no_create_edit': True, 'no_open': True}"
+                                       attrs="{'invisible': [('is_load', '=', False)]}"/>
+                            </div>
+                        </div>
+                    </group>
+                </group>
+                <footer>
+                    <button class="btn-primary" type="object" name="get_partner_info_by_vat" string="Get Info"
+                            attrs="{'invisible': [('is_load', '=', True)]}"/>
+                    <button class="btn-success" type="object" name="action_create_partner" string="Create Partner"
+                            attrs="{'invisible': ['|', ('is_load', '=', False), ('is_exists', '=', True)]}"/>
+                    <button class="btn-secondary" string="Cancel" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

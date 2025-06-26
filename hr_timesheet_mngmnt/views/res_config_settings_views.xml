@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit_hr_timesheet" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.hr.timesheet</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="55"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Timesheets" string="Timesheets" id="timesheets"
+                     data-key="hr_timesheet_mngmnt" groups="hr_timesheet_mngmnt.hr_timesheet_group_manager">
+                    <h2>Accounting</h2>
+                    <div class="row mt16 o_settings_container" name="hr_timesheet_account_setting_container">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Account</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  role="img"
+                                  aria-label="Values set here are company-specific." groups="base.group_multi_company"/>
+                            <div class="text-muted">
+                                Default account for timesheets.
+                            </div>
+                            <div class="row mt8">
+                                <field name="timesheet_account_id"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_config_settings_action_hr_timesheet" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module': 'hr_timesheet_mngmnt'}</field>
+    </record>
+</odoo>

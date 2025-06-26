@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="document_flow_document_view_form_inherit_project_nkk" model="ir.ui.view">
+        <field name="name">document.flow.document.form.inherit.project.nkk</field>
+        <field name="model">document_flow.document</field>
+        <field name="inherit_id" ref="document_flow.document_view_form"/>
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <xpath expr="//button[contains(@name, 'action_open_files')]" position="attributes">
+                <attribute name="attrs">
+                    {
+                        'invisible': [('template_id', '=', %(project_mngmnt_nkk.document_flow_document_kind_order_to_create_working_group)d)]
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="attrs">
+                    {
+                        'invisible': [('template_id', '=', %(project_mngmnt_nkk.document_flow_document_kind_order_to_create_working_group)d)]
+                    }
+                </attribute>
+            </xpath>
+            <xpath expr="//page[@name='description']" position="after">
+                <page name="project_members" string="Project Members"
+                      attrs="{
+                          'invisible': [('template_id', '!=', %(project_mngmnt_nkk.document_flow_document_kind_order_to_create_working_group)d)],
+                          'readonly': [('can_edit', '=', False)]
+                      }">
+                    <field name="employee_ids" mode="tree"
+                           attrs="{'readonly': [('can_edit', '=', False)]}"
+                           context="{'default_document_id': active_id}">
+                        <tree editable="bottom">
+                            <field name="employee_id" widget="many2one_avatar_employee"
+                                   options="{'relation': 'hr.employee.public'}"/>
+                            <field name="role_id"/>
+                            <field name="company_id" invisible="1"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

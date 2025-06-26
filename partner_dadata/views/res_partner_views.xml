@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_view_form_inherit_partner_dadata" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.partner.dadata</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="replace">
+                <label for="vat"/>
+                <div class="o_row">
+                    <field name="vat" placeholder="e.g. 9701160337"
+                               attrs="{'readonly': [('parent_id', '!=', False)]}"/>
+                    <button name="action_update_info_by_vat" type="object" groups="base.group_partner_manager"
+                            string="Update Info By Vat" class="btn-link mb-1 px-0" icon="fa-refresh"
+                            confirm="This will update partner information based on DaData information."
+                            attrs="{'invisible': ['|', ('id', '=', False), ('is_company', '=', False)]}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_view_kanban_inherit_partner_dadata" model="ir.ui.view">
+        <field name="name">res.partner.kanban.inherit.partner.dadata</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="js_class">partner_kanban</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

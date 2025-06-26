@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_budget_project_action_projects_from_responsibility_center" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project_budget.projects</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph</field>
+        <field name="domain">
+            [
+                ('budget_state', '=', 'work'),
+                ('step_status', '=', 'project')
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_step_status': 'project',
+                'default_responsibility_center_id': active_id,
+                'search_default_responsibility_center_id': active_id,
+                'search_default_in_the_pipe': True
+            }
+        </field>
+    </record>
+
+    <record id="account_analytic_account_view_kanban_inherit_project_budget" model="ir.ui.view">
+        <field name="name">account.analytic.account.kanban.inherit.project.budget</field>
+        <field name="model">account.analytic.account</field>
+        <field name="priority" eval="100"/>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_responsibility_center_kanban"
+                    action="%(project_budget_project_action_projects_from_responsibility_center)d" type="action"
+                    quick_create="false" group_create="false" group_delete="false">
+                <field name="active"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="head_id"/>
+                <field name="company_id"/>
+                <field name="currency_id"/>
+                <field name="project_ids"/>
+                <field name="project_count"/>
+                <field name="revenue"/>
+                <field name="cost"/>
+                <field name="margin"/>
+                <field name="profitability"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click">
+                            <div class="ribbon ribbon-top-right" attrs="{'invisible': [('active', '=', True)]}">
+                                <span class="bg-danger">Archived</span>
+                            </div>
+                            <div class="oe_kanban_details d-flex flex-column justify-content-between">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <strong class="o_kanban_record_title" t-att-title="record.name.value">
+                                            <t t-esc="record.name.value"/>
+                                        </strong>
+                                    </div>
+                                    <div class="o_secondary">
+                                        <small groups="base.group_multi_company">
+                                            <i class="fa fa-building-o" role="img" aria-label="Company"
+                                               title="Company"/>
+                                            <field name="company_id"/>
+                                        </small>
+                                        <span t-if="record.revenue.value" t-att-title="record.revenue.value"
+                                              class="d-flex justify-content-between font-weight-bold">
+                                            <span>Revenue:</span>
+                                            <field name="revenue" widget="monetary"/>
+                                        </span>
+                                        <span t-if="record.cost.value" t-att-title="record.cost.value"
+                                              class="d-flex justify-content-between font-weight-bold">
+                                            <span>Cost:</span>
+                                            <field name="cost" widget="monetary"/>
+                                        </span>
+                                        <span t-if="record.margin.value" t-att-title="record.margin.value"
+                                              class="d-flex justify-content-between font-weight-bold">
+                                            <span>Margin:</span>
+                                            <field name="margin" widget="monetary"/>
+                                        </span>
+                                        <span t-if="record.profitability.value" t-att-title="record.profitability.value"
+                                              class="d-flex justify-content-between font-weight-bold">
+                                            <span>Profitability:</span>
+                                            <field name="profitability" widget="percentage"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="o_kanban_record_bottom mt-3">
+                                    <div class="oe_kanban_bottom_left">
+                                        <div class="o_project_office_kanban_boxes d-flex align-items-baseline">
+                                            <a class="o_project_office_kanban_box"
+                                               name="%(project_budget_project_action_projects_from_responsibility_center)d"
+                                               type="action">
+                                                <div>
+                                                    <span class="o_value">
+                                                        <t t-esc="record.project_count.value"/>
+                                                        projects
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="oe_kanban_bottom_right">
+                                        <field t-if="record.head_id.raw_value" name="head_id"
+                                               widget="many2one_avatar"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="account_analytic_account_action_responsibility_centers" model="ir.actions.act_window">
+        <field name="name">Responsibility Centers</field>
+        <field name="res_model">account.analytic.account</field>
+        <field name="view_mode">kanban</field>
+        <field name="view_ids" eval="[
+            (5, 0, 0),
+            (0, 0, {'view_mode': 'kanban', 'view_id': ref('project_budget.account_analytic_account_view_kanban_inherit_project_budget')})
+        ]"/>
+        <field name="domain" eval="
+        [
+            ('plan_id', 'child_of', ref('analytic_responsibility_center.account_analytic_plan_responsibility_centers'))
+        ]"/>
+    </record>
+</odoo>

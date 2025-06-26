@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="task_task_report_analysis_view_pivot" model="ir.ui.view">
+        <field name="name">task.task.report.analysis.pivot</field>
+        <field name="model">task.task.report.analysis</field>
+        <field name="arch" type="xml">
+            <pivot string="Tasks Analysis" display_quantity="1" sample="1" disable_linking="1">
+                <field name="parent_ref" type="row"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="task_task_report_analysis_view_graph" model="ir.ui.view">
+        <field name="name">task.task.report.analysis.graph</field>
+        <field name="model">task.task.report.analysis</field>
+        <field name="arch" type="xml">
+            <graph string="Tasks Analysis" sample="1" disable_linking="1">
+                <field name="parent_ref"/>
+                <field name="stage_id"/>
+            </graph>
+        </field>
+    </record>
+</odoo>

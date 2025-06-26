@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_account_method_employee_rate_view_search" model="ir.ui.view">
+        <field name="name">project.account.method.employee.rate.search</field>
+        <field name="model">project.account.method.employee.rate</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="project_account_method_employee_rate_view_tree" model="ir.ui.view">
+        <field name="name">project.account.method.employee.rate.tree</field>
+        <field name="model">project.account.method.employee.rate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_account_method_employee_rate_view_form" model="ir.ui.view">
+        <field name="name">project.account.method.employee.rate.form</field>
+        <field name="model">project.account.method.employee.rate</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1 class="d-flex flex-row">
+                            <field name="name" class="o_text_overflow"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="expression" string="Expression">
+                            <field name="expression" widget="ace" options="{'mode': 'python'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_account_method_employee_rate_action" model="ir.actions.act_window">
+        <field name="name">Employee Rate Account Methods</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.account.method.employee.rate</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="project_account_method_employee_rate_view_search"/>
+    </record>
+</odoo>

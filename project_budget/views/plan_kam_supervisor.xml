@@ -1,0 +1,290 @@
+<odoo>
+    <data>
+        <!-- project_budget.budget_plan_skam-->
+        <record id="project_budget_budget_plan_kam_view_search" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_kam.search</field>
+            <field name="model">project_budget.budget_plan_kam</field>
+            <field name="arch" type="xml">
+                <search string="Search Plans">
+                    <filter name="actual_year" string="Actual year" domain="[('year', '=', datetime.datetime.now().year)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="show_budget_plan_kam_tree" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_kam.tree</field>
+            <field name="model">project_budget.budget_plan_kam</field>
+            <field name="arch" type="xml">
+                <tree string="plan kam">
+                    <field name="company_id"/>
+                    <field name="year"/>
+                    <field name="company_id"/>
+                    <field name="responsibility_center_id"/>
+                    <field name="key_account_manager_id" widget="many2one_avatar_employee"/>
+                    <field name="currency_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="show_budget_plan_kam_form" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_kam.form</field>
+            <field name="model">project_budget.budget_plan_kam</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="budget_plan_kam" >
+                        <h4>
+                            <group string="BUDGET PERFORMANCE PLAN" >\
+                                <field name="plan_supervisor_id" options="{'no_create': True}"/>
+                            </group>
+                        </h4>
+                        <group col="3">
+                            <group>
+                                <field name="year"/>
+                                <field name="responsibility_center_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="company_id" options="{'no_create': True, 'no_open': True}"/>
+                            </group>
+                            <group>
+                                <field name="key_account_manager_id" options="{'no_create': True, 'no_open': True}"
+                                       widget="many2one_avatar_employee"/>
+                                <field name="is_use_ebit" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="currency_id" options="{'no_create': True, 'no_open': True}"/>
+                                <field name="is_use_net_profit" widget="boolean_toggle"/>
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="sum_contracting_year"/>
+                                <field name="sum_contracting_year_6_6"/>
+                                <field name="sum_contracting_year_fact" decoration-success="1"/>
+                            </group>
+                            <group>
+                                <field name="sum_cash_year"/>
+                                <field name="sum_cash_year_6_6"/>
+                                <field name="sum_cash_year_fact" decoration-success="1"/>
+                            </group>
+                            <group>
+                                <field name="sum_acceptance_year"/>
+                                <field name="sum_acceptance_year_6_6"/>
+                                <field name="sum_acceptance_year_fact" decoration-success="1"/>
+                            </group>
+                            <group>
+                                <field name="sum_margin_income_year"/>
+                                <field name="sum_margin_income_year_6_6"/>
+                                <field name="sum_margin_income_year_fact" decoration-success="1"/>
+                            </group>
+                        </group>
+                        <group col="4">
+                            <group>
+                                <field name="sum_margin3_income_year"/>
+                                <field name="sum_margin3_income_year_6_6"/>
+                                <field name="sum_margin3_income_year_fact" decoration-success="1"/>
+                            </group>
+                            <group>
+                                <field name="sum_ebit_year" attrs="{'invisible': [('is_use_ebit', '=', False)]}"/>
+                                <field name="sum_ebit_year_6_6" attrs="{'invisible': [('is_use_ebit', '=', False)]}"/>
+                                <field name="sum_ebit_year_fact" attrs="{'invisible': [('is_use_ebit', '=', False)]}" decoration-success="1"/>
+                            </group>
+                            <group>
+                                <field name="sum_net_profit_year" attrs="{'invisible': [('is_use_net_profit', '=', False)]}"/>
+                                <field name="sum_net_profit_year_6_6" attrs="{'invisible': [('is_use_net_profit', '=', False)]}"/>
+                                <field name="sum_net_profit_year_fact" attrs="{'invisible': [('is_use_net_profit', '=', False)]}" decoration-success="1"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                        <field name="budget_plan_kam_spec_ids" widget="section_and_note_one2many"
+                                mode="tree" >
+                            <tree editable="bottom"  delete="0" create="0" >
+                                <field name="type_row" style="background-color:green;" nolabel="1"/>
+                                <field name="q1_plan" decoration-muted="q1_plan==0"/>
+                                <field name="q1_fact" decoration-success="1"/>
+                                <field name="q2_plan" decoration-muted="q2_plan==0"/>
+                                <field name="q2_fact" decoration-success="1"/>
+                                <field name="q3_plan" decoration-muted="q3_plan==0"/>
+                                <field name="q3_plan_6_6" decoration-muted="q3_plan_6_6==0"/>
+                                <field name="q3_fact" decoration-success="1"/>
+                                <field name="q4_plan" decoration-muted="q4_plan==0"/>
+                                <field name="q4_plan_6_6" decoration-muted="q4_plan_6_6==0"/>
+                                <field name="q4_fact" decoration-success="1"/>
+                                <field name="year_plan" decoration-bf="1" decoration-muted="year_plan==0"/>
+                                <field name="year_plan_6_6" decoration-bf="1" />
+                                <field name="year_fact" decoration-bf="1" decoration-success="1"/>
+                            </tree>
+                        </field>
+                        </sheet>
+
+                    </form>
+                </field>
+            </record>
+
+            <record id="show_budget_plan_kam" model="ir.actions.act_window">
+                <field name="name">project_budget.budget_plan_kam</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">project_budget.budget_plan_kam</field>
+                <field name="view_mode">tree,form</field>
+                <field name="context">{
+                    'search_default_group_by_provider': True,
+                    'search_default_actual_year': True,
+                    }</field>
+                <field name="help" type="html">
+                  <p class="o_view_nocontent_smiling_face">
+                    Create a new KAM's plan on year
+                  </p><p>
+                    each KAM have own plan on year
+                  </p>
+                </field>
+            </record>
+<!-- end project_budget.budget_plan_kam-->
+<!-- end project_budget.budget_plan_supervisor-->
+        <record id="project_budget_budget_plan_supervisor_view_search" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_supervisor.search</field>
+            <field name="model">project_budget.budget_plan_supervisor</field>
+            <field name="arch" type="xml">
+                <search string="Search Plans">
+                    <filter name="actual_year" string="Actual year" domain="[('year', '=', datetime.datetime.now().year)]"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="show_budget_plan_supervisor_tree" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_supervisor.tree</field>
+            <field name="model">project_budget.budget_plan_supervisor</field>
+            <field name="arch" type="xml">
+                <tree string="plan supervisor">
+                    <field name="company_id"/>
+                    <field name="year"/>
+                    <field name="company_id"/>
+                    <field name="responsibility_center_id"/>
+                    <field name="currency_id"/>
+                    <field name="is_use_ebit" widget="boolean_toggle"/>
+                    <field name="is_use_net_profit" widget="boolean_toggle"/>
+                    <field name="is_company_plan"/>
+                </tree>
+            </field>
+        </record>
+        <record id="show_budget_plan_supervisor_form" model="ir.ui.view">
+            <field name="name">project_budget.budget_plan_supervisor.form</field>
+            <field name="model">project_budget.budget_plan_supervisor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet string="budget_plan_supervisor" >
+                        <notebook>
+                            <page string = "Supervisor's plan">
+                                <h4>
+                                    <group string="BUDGET PERFORMANCE PLAN" >
+                                    </group>
+                                </h4>
+                                <group col="3">
+                                    <group>
+                                        <field name="year"/>
+                                        <field name="company_id" options="{'no_create': True, 'no_open': True}"/>
+                                        <field name="currency_id" options="{'no_create': True, 'no_open': True}"/>
+                                    </group>
+                                    <group>
+                                        <field name="is_company_plan"/>
+                                        <field name="responsibility_center_id"
+                                               options="{'no_create': True, 'no_open': True}"
+                                               attrs="{'invisible': [('is_company_plan', '=', True)], 'required': [('is_company_plan', '=', False)]}"
+                                        />
+                                    </group>
+                                    <group>
+                                        <field name="is_use_ebit" widget="boolean_toggle"/>
+                                        <field name="is_use_net_profit" widget="boolean_toggle"/>
+                                    </group>
+                                </group>
+                                <group col="4">
+                                    <group>
+                                        <field name="sum_contracting_year"/>
+                                        <field name="sum_contracting_year_6_6"/>
+                                        <field name="sum_contracting_year_fact" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="sum_cash_year"/>
+                                        <field name="sum_cash_year_6_6"/>
+                                        <field name="sum_cash_year_fact" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="sum_acceptance_year"/>
+                                        <field name="sum_acceptance_year_6_6"/>
+                                        <field name="sum_acceptance_year_fact" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="sum_margin_income_year"/>
+                                        <field name="sum_margin_income_year_6_6"/>
+                                        <field name="sum_margin_income_year_fact" decoration-success="1"/>
+                                    </group>
+                                </group>
+                                <group col="4">
+                                    <group>
+                                        <field name="sum_margin3_income_year"/>
+                                        <field name="sum_margin3_income_year_6_6"/>
+                                        <field name="sum_margin3_income_year_fact" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="sum_ebit_year" attrs="{'invisible': [('is_use_ebit', '=', False)]}"/>
+                                        <field name="sum_ebit_year_6_6" attrs="{'invisible': [('is_use_ebit', '=', False)]}"/>
+                                        <field name="sum_ebit_year_fact" attrs="{'invisible': [('is_use_ebit', '=', False)]}" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="sum_net_profit_year" attrs="{'invisible': [('is_use_net_profit', '=', False)]}"/>
+                                        <field name="sum_net_profit_year_6_6" attrs="{'invisible': [('is_use_net_profit', '=', False)]}"/>
+                                        <field name="sum_net_profit_year_fact" attrs="{'invisible': [('is_use_net_profit', '=', False)]}" decoration-success="1"/>
+                                    </group>
+                                    <group>
+                                    </group>
+                                </group>
+
+                                <field name="budget_plan_supervisor_spec_ids" widget="section_and_note_one2many"
+                                        mode="tree" >
+                                    <tree editable="bottom"  delete="0" create="0" >
+                                        <field name="type_row" style="background-color:green;" nolabel="1"/>
+                                        <field name="q1_plan" decoration-muted="q1_plan==0"/>
+                                        <field name="q1_fact" decoration-success="1"/>
+                                        <field name="q2_plan" decoration-muted="q2_plan==0"/>
+                                        <field name="q2_fact" decoration-success="1"/>
+                                        <field name="q3_plan" decoration-muted="q3_plan==0"/>
+                                        <field name="q3_plan_6_6" decoration-muted="q3_plan_6_6==0"/>
+                                        <field name="q3_fact" decoration-success="1"/>
+                                        <field name="q4_plan" decoration-muted="q4_plan==0"/>
+                                        <field name="q4_plan_6_6" decoration-muted="q4_plan_6_6==0"/>
+                                        <field name="q4_fact" decoration-success="1"/>
+                                        <field name="year_plan" decoration-bf="1" decoration-muted="year_plan==0"/>
+                                        <field name="year_plan_6_6" decoration-bf="1" />
+                                        <field name="year_fact" decoration-bf="1" decoration-success="1"/>
+                                    </tree>
+                                </field>
+
+                            </page>
+                            <page string = "KAM's plans" attrs="{'invisible': [('is_company_plan', '=', True)]}">
+                                 <field name="plan_kam_ids" widget="section_and_note_one2many"
+                                        mode="tree">
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="show_budget_plan_supervisor" model="ir.actions.act_window">
+            <field name="name">project_budget.budget_plan_supervisor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project_budget.budget_plan_supervisor</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'search_default_group_by_provider': True,
+                'search_default_actual_year': True,
+                }</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a new supervisors's plan on year
+              </p><p>
+                each supervisor have own plan on year
+              </p>
+            </field>
+        </record>
+<!-- end project_budget.budget_plan_supervisor-->
+
+    </data>
+</odoo>

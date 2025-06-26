@@ -1,0 +1,4 @@
+<odoo>
+    <menuitem id="project_menu_configuration_types" parent="project_mngmnt.project_menu_configuration"
+              name="Project Types" sequence="1000" action="project_type_action"/>
+</odoo>

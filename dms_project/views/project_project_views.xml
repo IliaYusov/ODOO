@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_project_view_form_inherit_dms" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.dms</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_mngmnt.project_project_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']/button[@name='%(project_mngmnt.task_task_action_view_milestones)d']"
+                   position="before">
+                <button name="action_open_files" type="object" class="oe_stat_button"
+                        groups="dms.group_dms_user" icon="fa-folder-open-o">
+                    <field name="file_count" string="Files" widget="statinfo" groups="dms.group_dms_user"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

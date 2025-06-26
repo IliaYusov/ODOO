@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="partner_dadata.KanbanViewButtons" t-inherit="web.KanbanView.Buttons" t-inherit-mode="primary" owl="1">
+        <xpath expr="//t[@t-if='canCreate']" position="inside">
+            <button type="button" class="d-none d-md-inline btn btn-primary mx-1"
+                    t-on-click.prevent="loadPartner">
+                Load Partner
+            </button>
+        </xpath>
+    </t>
+</templates>

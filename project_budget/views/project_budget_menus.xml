@@ -1,0 +1,104 @@
+<odoo>
+    <menuitem id="project_budget_menu" name="Project budget" sequence="1"/>
+
+    <menuitem id="project_budget_budgets" parent="project_budget_menu" name="Budgets/Projects" sequence="10">
+        <menuitem id="project_budget_budgets_comercial_budget_spec" name="Projects" sequence="1"
+                  action="action_project_budget_projects"/>
+        <menuitem id="menu_project_budget_project_offices" name="Projects To Project Offices" sequence="2"
+                  action="account_analytic_account_action_responsibility_centers"/>
+        <menuitem id="project_budget_budgets_comercial_budget_spec_all" name="Projects all budgets" sequence="3"
+                  action="show_comercial_budget_spec_all" groups="project_budget.project_budget_group_project_fixed_editor"/>
+        <menuitem id="project_budget_budgets_comercial_budget" name="Comercial budgets" sequence="4"
+                  action="show_comercial_budgets" groups="project_budget.project_budget_admin"/>
+<!--        TODO: вынести тендеры в отдельное приложение-->
+        <menuitem id="project_budget_budgets_tenders" name="Tenders" sequence="5"
+                  action="show_projects_tenders"/>
+<!--        TODO: возможно, пункт меню нужно скрыть от "обычных" пользователей-->
+        <menuitem id="project_budget_catalogs_budget_plan_kam" name="budget_plan_kam" sequence="6"
+                  action="show_budget_plan_kam"/>
+        <menuitem id="project_budget_catalogs_budget_plan_supervisor" name="budget_plan_supervisor" sequence="7"
+                  action="show_budget_plan_supervisor"/>
+    </menuitem>
+
+    <menuitem id="project_budget_catalogs" parent="project_budget_menu" name="Catalogs" sequence="20"/>
+
+    <menuitem id="project_budget_catalogs_customer_organization" parent="project_budget_catalogs"
+              name="customer_organization" action="action_res_partner_companies"/>
+    <menuitem id="project_budget_catalogs_vat_attribute" parent="project_budget_catalogs" name="vat_attribute"
+              action="show_vat_attribute"/>
+    <menuitem id="project_budget_catalogs_tender_current_status" parent="project_budget_catalogs" name="tender status"
+              action="show_project_tender_current_status"/>
+    <menuitem id="project_budget_catalogs_tender_comments_type" parent="project_budget_catalogs"
+              name="tender comment types" action="show_project_tender_comments_type"/>
+
+    <menuitem id="project_budget_access" parent="project_budget_menu" name="Access" sequence="30"/>
+
+    <menuitem id="project_budget_reports" parent="project_budget_menu" name="Reports" sequence="40">
+        <menuitem id="project_budget_tenders_report" name="Tenders" sequence="1"
+                  groups="project_budget_tenders_user,project_budget_tenders_admin">
+            <menuitem id="project_budget_tender_print_report" name="Print tenders list" sequence="1"
+                      action="action_tender_print_report"
+                      groups="project_budget_tenders_user,project_budget_tenders_admin"/>
+        </menuitem>
+
+        <menuitem id="project_budget_projects_report" name="Projects" sequence="2"
+                  groups="project_budget_users,project_budget_admin,project_budget_users_readonly">
+            <menuitem id="project_budget_projects_print_report" name="Print projects" sequence="1"
+                      action="action_projects_print_report"
+                      groups="project_budget_users,project_budget_admin,project_budget_users_readonly"/>
+            <menuitem id="menu_project_budget_overdue_projects" name="Overdue Projects" sequence="2"
+                      action="action_project_budget_overdue_projects"
+                      groups="project_budget_users,project_budget_admin"/>
+        </menuitem>
+    </menuitem>
+
+    <menuitem id="menu_project_budget_configuration" parent="project_budget_menu" name="Configuration"
+              sequence="100">
+        <menuitem id="menu_project_budget_project_teams" name="Project Teams" sequence="5"
+                  groups="project_budget_admin">
+            <menuitem id="menu_project_budget_project_roles" name="Roles" sequence="1"
+                      action="action_project_budget_project_roles"/>
+        </menuitem>
+        <menuitem id="menu_project_budget_pipeline" name="Pipeline" sequence="10" groups="project_budget_admin">
+            <menuitem id="menu_project_budget_pipeline_stages" name="Stages" sequence="10"
+                      action="action_project_budget_project_stages" groups="base.group_no_one"/>
+            <menuitem id="crm_menu_lost_reasons" name="Lost Reasons" sequence="20" action="crm_lost_reason_action"/>
+        </menuitem>
+        <menuitem id="menu_project_budget_access" name="Access" sequence="20" groups="project_budget_admin">
+            <menuitem id="menu_project_budget_transfer_rights" name="Transfer Rights To The Employee" sequence="1"
+                      action="action_project_budget_project_user_rights"/>
+        </menuitem>
+<!--        TODO: вынести тендеры в отдельное приложение-->
+        <menuitem id="menu_project_budget_partners" name="Company Partners" sequence="40"
+                  groups="base.group_partner_manager">
+            <menuitem id="menu_project_budget_partner_types" name="Partner Types" sequence="1"
+                      action="action_res_company_partner_types"/>
+            <menuitem id="menu_project_budget_partner_levels" name="Partner Levels" sequence="2"
+                      action="action_res_company_partner_grades"/>
+            <menuitem id="menu_project_budget_company_partners" name="Company Partners" sequence="3"
+                      action="action_res_company_partners"/>
+        </menuitem>
+
+        <menuitem id="menu_project_budget_account" name="Accounting" sequence="50">
+            <menuitem id="menu_action_currency_form" name="Currencies" sequence="1"
+                      action="base.action_currency_form" groups="base.group_system"/>
+        </menuitem>
+
+        <menuitem id="menu_project_budget_report" name="Reporting" sequence="60" groups="base.group_no_one">
+            <menuitem id="menu_action_scheduled_report_form" name="Scheduled Reports" sequence="1"
+                      action="action_view_project_budget_scheduled_reports"/>
+            <menuitem id="menu_action_report_external_data_form" name="Report External Data" sequence="2"
+                      action="action_view_project_budget_report_external_data"/>
+            <menuitem id="menu_action_add_new_report_external_data" name="Add New Report External Data" sequence="3"
+                      action="action_open_file"/>
+        </menuitem>
+
+        <menuitem id="account_analytic_menu" name="Analytic Accounting" sequence="100"
+                  groups="analytic.group_analytic_accounting">
+            <menuitem id="account_analytic_menu_analytics" name="Analytic Accounts" sequence="1"
+                      action="analytic.action_account_analytic_account_form"/>
+            <menuitem id="account_analytic_menu_plans" name="Analytic Plans" sequence="2"
+                      action="analytic.account_analytic_plan_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

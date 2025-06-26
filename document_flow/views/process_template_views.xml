@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_view_all_process_template" model="ir.actions.act_window">
+        <field name="name">Process Templates</field>
+        <field name="res_model">document_flow.process.template</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"active_test": False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No process templates found. Let's create one!
+            </p>
+        </field>
+    </record>
+
+    <record id="action_document_flow_processes_from_template" model="ir.actions.act_window">
+        <field name="name">Processes</field>
+        <field name="res_model">document_flow.process</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('template_id', '=', active_id)]</field>
+    </record>
+
+    <record id="process_template_view_tree" model="ir.ui.view">
+        <field name="name">document_flow.process.template.tree</field>
+        <field name="model">document_flow.process.template</field>
+        <field name="arch" type="xml">
+            <tree string="Process Templates" multi_edit="1" sample="1">
+                <field name="name"/>
+                <field name="document_kind_id"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="process_template_view_form" model="ir.ui.view">
+        <field name="name">document_flow.process.template.form</field>
+        <field name="model">document_flow.process.template</field>
+        <field name="arch" type="xml">
+            <form string="Process Template">
+                <group invisible="1">
+                    <field name="active"/>
+                    <field name="model"/>
+                </group>
+                <sheet string="Process Template">
+                    <div name="button_box" position="inside">
+                        <button class="oe_stat_button" type="action" name="%(action_document_flow_processes_from_template)d"
+                                attrs="{'invisible': [('process_count', '=', 0)]}"
+                                icon="fa-bars">
+                            <field string="Processes" name="process_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name" placeholder="Process Template Title..."/>
+                        </h1>
+                    </div>
+                    <group name="object_approval" col="2">
+                        <group>
+                            <field name="model_id"/>
+                        </group>
+                        <group>
+                            <field name="document_kind_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="company_id" groups="base.group_multi_company"/>
+                    </group>
+                    <group>
+                        <field name="description" string="Description" type="html" class="text_high"
+                               options="{'collaborative': true, 'resizable': false}"
+                               placeholder="Description..."/>
+                    </group>
+                    <notebook>
+                        <page name="actions_page" string="Actions">
+                            <field name="action_ids" widget="section_and_note_one2many" mode="tree"
+                                   context="{'default_sequence': len(action_ids), 'default_parent_ref_type': 'document_flow.process.template',
+                                   'default_parent_ref_id': active_id}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_tree" model="ir.ui.view">
+        <field name="name">document_flow.action.tree</field>
+        <field name="model">document_flow.action</field>
+        <field name="arch" type="xml">
+            <tree string="Actions">
+                <field name="sequence" widget="handle"/>
+                <field name="visible_sequence" width="5%"/>
+                <field name="type"/>
+                <field name="name"/>
+                <field name="type_sequence"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_view_form" model="ir.ui.view">
+        <field name="name">document_flow.action.form</field>
+        <field name="model">document_flow.action</field>
+        <field name="arch" type="xml">
+            <form string="Action">
+                <sheet string="Action">
+                    <group invisible="1">
+                        <field name="parent_ref_type"/>
+                        <field name="parent_ref_id"/>
+                        <field name="description"/>
+                    </group>
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name" placeholder="Action Title..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="type"/>
+                    </group>
+                    <group>
+                        <field name="type_sequence"/>
+                    </group>
+                    <group>
+                        <field name="return_on_action_id"/>
+                    </group>
+                    <group col="2" attrs="{'invisible': [('type', '!=', 'execution')]}">
+                        <group>
+                            <field name="reviewer_ref"/>
+                        </group>
+                        <group>
+                            <field name="period"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="executors_page" string="Executors" attrs="{'invisible': [('type', '=', 'complex')]}">
+                            <group attrs="{'invisible': [('type', 'in', ('review'))]}">
+                                <field name="task_sequence"/>
+                            </group>
+                            <field name="executor_ids" mode="tree">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"
+                                           attrs="{'column_invisible': ['|', ('parent.type', 'in', ('review')), ('parent.task_sequence', '=', 'all_at_once')]}"/>
+                                    <field name="visible_sequence" width="5%"/>
+                                    <field name="executor_ref" options="{'no_create': True}"/>
+                                    <field name="type_sequence"
+                                           attrs="{'column_invisible': ['|', ('parent.type', 'in', ('review')), ('parent.task_sequence', '!=', 'mixed')]}"/>
+                                    <field name="period"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="child_page" string="Actions" attrs="{'invisible': [('type', 'not in', ('complex'))]}">
+                            <field name="child_ids" widget="section_and_note_one2many" mode="tree" context="{'default_sequence': len(child_ids)}"/>
+                        </page>
+                        <page name="start_condition" string="Start Condition">
+                            <field name="start_condition" widget="ace" options="{'mode': 'python'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
