@@ -12,7 +12,7 @@ class Project(models.Model):
                                                       ondelete='restrict')
     currency_id = fields.Many2one(related='company_id.currency_id', readonly=True)
     hourly_cost = fields.Monetary(string='Hourly Cost', copy=True, default=0.0,
-                                  groups='project_mngmnt.project_group_manager')
+                                  groups='project_mngmnt.project_group_project_manager')
 
     timesheet_ids = fields.One2many('account.analytic.line', 'project_id', string='Timesheets')
     total_hours_spent = fields.Float(compute='_compute_total_hours_spent', string='Hours')

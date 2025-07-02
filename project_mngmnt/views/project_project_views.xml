@@ -232,7 +232,7 @@
                                 </kanban>
                             </field>
                         </page>
-                        <page name="settings" string="Settings" groups="project_mngmnt.project_group_manager">
+                        <page name="settings" string="Settings" groups="project_mngmnt.project_group_project_manager">
                             <group>
                                 <group>
                                     <field name="analytic_account_id" context="{'default_partner_id': partner_id}"
