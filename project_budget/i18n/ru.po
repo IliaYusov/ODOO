@@ -355,6 +355,7 @@ msgstr "Сумма в НДЕ"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__amount_total
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__amount_total
 msgid "Amount Total"
 msgstr "Сумма контрактования"
 
@@ -365,8 +366,19 @@ msgstr "Сумма контрактования в НДЕ"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__amount_untaxed
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__amount_untaxed
 msgid "Amount Untaxed"
 msgstr "Сумма выручки"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__planned_acceptance_flow_sum
+msgid "Planned acceptance sum"
+msgstr "Сумма актирования без НДС"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__planned_cash_flow_sum
+msgid "Planned cash sum"
+msgstr "Сумма ПДС"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__amount_untaxed_in_company_currency
@@ -413,6 +425,11 @@ msgstr "Аналитические разделы"
 #: model_terms:ir.actions.act_window,help:project_budget.action_project_budget_overdue_projects
 msgid "Analyze your overdue projects."
 msgstr "Анализируйте просроченные даты в сделках."
+
+#. module: project_budget
+#: model_terms:ir.actions.act_window,help:project_budget.action_project_budget_incorrect_forecast
+msgid "Analyze your projects with incorrect forecasts."
+msgstr "Анализируйте ошибки в прогнозах сделок."
 
 #. module: project_budget
 #: model_terms:ir.ui.view,arch_db:project_budget.show_comercial_budget_spec_form
@@ -632,6 +649,7 @@ msgstr "Компании"
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_planned_cash_flow__company_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_member__company_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__company_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__company_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_role__company_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__company_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_report_external_data__company_id
@@ -916,6 +934,7 @@ msgstr "Текущий статус"
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_link_project_wizard__partner_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__customer_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__customer_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__partner_id
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_view_search
 msgid "Customer"
@@ -988,6 +1007,7 @@ msgstr "Дата: %(old_date)s -> %(new_date)s"
 
 #. module: project_budget
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_tree
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_tree
 msgid "Deal"
 msgstr "Сделка"
 
@@ -1053,6 +1073,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_currency_rates__display_name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_member__display_name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__display_name
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__display_name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_role__display_name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_stage__display_name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_steps__display_name
@@ -1370,6 +1391,7 @@ msgstr "Общие"
 
 #. module: project_budget
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_search
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_search
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_view_search
 #: model_terms:ir.ui.view,arch_db:project_budget.view_tender_search
 msgid "Group By"
@@ -1412,6 +1434,7 @@ msgstr "Помогает управлять бюджетными проекта�
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_currency_rates__id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_member__id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_role__id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_stage__id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_steps__id
@@ -1598,6 +1621,7 @@ msgstr "КБ в финуправление"
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_budget_plan_kam__key_account_manager_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__key_account_manager_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__key_account_manager_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__key_account_manager_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_tenders__key_account_manager_ids
 #: model:project_budget.project.role,name:project_budget.project_role_key_account_manager
@@ -1626,6 +1650,7 @@ msgstr "КАМ"
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_currency_rates____last_update
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_member____last_update
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report____last_update
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report____last_update
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_role____last_update
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_stage____last_update
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_steps____last_update
@@ -1880,6 +1905,7 @@ msgstr "Мои сделки"
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_crm_lost_reason__name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__name
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_role__name
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_stage__name
 #: model:ir.model.fields,field_description:project_budget.field_res_company_partner__name
@@ -2091,6 +2117,14 @@ msgid "Overdue Project"
 msgstr "Сделка с просроченными датами"
 
 #. module: project_budget
+#: model:ir.actions.act_window,name:project_budget.action_project_budget_incorrect_forecasts
+#: model:ir.ui.menu,name:project_budget.menu_project_budget_incorrect_forecast
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_form
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_tree
+msgid "Incorrect Forecasts"
+msgstr "Сделки c ошибочными прогнозами"
+
+#. module: project_budget
 #: model:ir.actions.act_window,name:project_budget.action_project_budget_overdue_projects
 #: model:ir.ui.menu,name:project_budget.menu_project_budget_overdue_projects
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_graph
@@ -2103,6 +2137,11 @@ msgstr "Сделки с просроченными датами"
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_form
 msgid "Overdue Reason"
 msgstr "Причина просрочки"
+
+#. module: project_budget
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_form
+msgid "Incorrect Forecast"
+msgstr "Ошибочные прогнозы"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__overdue_in_7_days
@@ -2342,6 +2381,7 @@ msgstr "Реестр тендеров"
 
 #. module: project_budget
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_tree
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_tree
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_view_tree
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_step_project_view_form
 #: model_terms:ir.ui.view,arch_db:project_budget.show_comercial_budget_spec_form
@@ -2377,6 +2417,7 @@ msgstr "Рентабельность"
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_planned_cash_flow__projects_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_member__project_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__project_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__project_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_tenders__project_ids
 #: model_terms:ir.ui.view,arch_db:project_budget.show_comercial_budget_spec_form
 msgid "Project"
@@ -2403,6 +2444,7 @@ msgstr "Количество проектов"
 #. module: project_budget
 #: model:project_budget.project.role,name:project_budget.project_role_project_curator
 #: model:res.groups,name:project_budget.project_budget_group_project_curator
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__project_supervisor_id
 msgid "Project Curator"
 msgstr "Куратор проекта"
 
@@ -2413,6 +2455,7 @@ msgstr "Коммерческая деятельность"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__project_manager_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__project_manager_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__project_manager_id
 #: model:project_budget.project.role,name:project_budget.project_role_project_manager
 #: model:res.groups,name:project_budget.project_budget_group_project_manager
@@ -2429,8 +2472,10 @@ msgstr "Участник проекта"
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_budget_plan_kam__responsibility_center_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_budget_plan_supervisor__responsibility_center_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__responsibility_center_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__responsibility_center_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_steps__project_office_id
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_overdue_report_view_search
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_incorrect_forecast_report_view_search
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_project_view_search
 msgid "Project Office"
 msgstr "Проектный офис"
@@ -2439,6 +2484,11 @@ msgstr "Проектный офис"
 #: model:ir.model,name:project_budget.model_project_budget_project_overdue_report
 msgid "Project Overdue Analysis Report"
 msgstr "Отчет по просроченным датам в сделках"
+
+#. module: project_budget
+#: model:ir.model,name:project_budget.model_project_budget_project_overdue_report
+msgid "Incorrect Forecasts Analysis Report"
+msgstr "Отчет по сделкам с ошибочными прогнозами"
 
 #. module: project_budget
 #: model:ir.model,name:project_budget.model_project_budget_project_role
@@ -3025,6 +3075,7 @@ msgstr "Перечень проектов"
 
 #. module: project_budget
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_overdue_report__stage_id
+#: model:ir.model.fields,field_description:project_budget.field_project_budget_incorrect_forecast_report__stage_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_project_steps__stage_id
 #: model:ir.model.fields,field_description:project_budget.field_project_budget_projects__stage_id
 msgid "Stage"
