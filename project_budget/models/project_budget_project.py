@@ -788,6 +788,15 @@ class Project(models.Model):
             if not isok:
                 raise ValidationError(raisetext)
 
+            if rows.stage_id.code in ('50', '75', '100') and rows.step_status == 'project':  # проверка совпадения прогнозов и фин. показателей
+                if abs(rows.amount_untaxed - rows.planned_amount_untaxed_acts) > 100:
+                    raisetext = _("DENIED. planned_acceptance_sum <> amount_untaxed")
+                    raise ValidationError(raisetext)
+
+                if abs(rows.amount_total - rows.planned_amount_total_cash_flow) > 100:
+                    raisetext = _("DENIED. planned_cash_sum <> amount_total")
+                    raise ValidationError(raisetext)
+
             if rows.approve_state == "need_approve_manager" and rows.budget_state == 'work' \
                     and rows.project_status != 'cancel':
                 rows.write({'approve_state': "need_approve_supervisor"})
