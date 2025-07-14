@@ -866,6 +866,11 @@ msgid "The period of shipment or provision of services to the Client(MONTH)"
 msgstr "Последняя отгрузка"
 
 #. module: project_budget_nkk
+#: model:ir.model.fields,field_description:project_budget_nkk.field_project_budget_projects__profitable_contract_id
+msgid "Profitable contract"
+msgstr "Доходный договор"
+
+#. module: project_budget_nkk
 #: model:ir.model.fields,field_description:project_budget_nkk.field_project_budget_projects__total_margin
 #: model_terms:ir.ui.view,arch_db:project_budget_nkk.currency_view_form_inherit_nkk
 #: model_terms:ir.ui.view,arch_db:project_budget_nkk.project_budget_project_child_view_tree
