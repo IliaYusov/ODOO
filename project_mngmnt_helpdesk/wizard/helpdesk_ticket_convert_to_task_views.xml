@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_convert_to_task_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.convert.to.task.form</field>
+        <field name="model">helpdesk.ticket.convert.to.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="project_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                        <field name="task_type_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                        <field name="stage_id" options="{'no_create_edit': True, 'no_open': True}"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_convert" string="Convert" type="object" class="btn-primary"/>
+                    <button name="cancel" string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

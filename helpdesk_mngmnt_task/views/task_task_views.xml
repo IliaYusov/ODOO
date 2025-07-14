@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="task_task_action_view_ticket_tasks" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">task.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">
+            [
+                ('ticket_id', '=', active_id),
+                ('parent_id', '=', False)
+            ]
+        </field>
+        <field name="context">
+            {
+                'default_parent_ref_type': 'helpdesk.ticket',
+                'default_parent_ref_id': active_id,
+                'default_ticket_id': active_id
+            }
+        </field>
+        <field name="help" type="html">
+            <p>
+                Task management allows you to manage the pipeline of your tasks efficiently. You can track
+                progress, discuss on tasks, attach documents, etc.
+            </p>
+        </field>
+    </record>
+
+    <record id="task_task_view_form_inherit_helpdesk" model="ir.ui.view">
+        <field name="name">task.task.form.inherit.helpdesk</field>
+        <field name="model">task.task</field>
+        <field name="inherit_id" ref="task.task_task_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra_info']//group[@name='creation_details']" position="inside">
+                <group name="ticket_info" string="Ticket Info" groups="helpdesk_mngmnt.helpdesk_group_user">
+                    <field name="ticket_id" attrs="{'readonly': [('can_edit', '=', False)]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

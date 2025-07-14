@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="helpdesk_ticket_type_view_search" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.type.search</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_view_tree" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.type.tree</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="arch" type="xml">
+            <tree string="Ticket Types">
+                <field name="name"/>
+                <field name="description" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.type.form</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="start_stage_id" invisible="1"/>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1 class="d-flex flex-row">
+                            <field name="name" class="o_text_overflow" placeholder="Name..."/>
+                        </h1>
+                    </div>
+                    <field name="description" placeholder="Description..."/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_view_kanban" model="ir.ui.view" >
+        <field name="name">helpdesk.ticket.type.kanban</field>
+        <field name="model">helpdesk.ticket.type</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_emphasize_colors o_helpdesk_ticket_type_kanban"
+                    group_create="false" create="false" sample="1" type="object" action="action_view_tickets">
+                <field name="name"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_global_click">
+                            <span class="oe_kanban_color_help"
+                                  t-attf-title="In #{kanban_getcolorname(record.color.raw_value)}" role="img"
+                                  t-attf-aria-label="In #{kanban_getcolorname(record.color.raw_value)}"/>
+                            <div class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <field name="display_name"/>
+                                    </div>
+                                </div>
+                                <div t-if="!selection_mode" class="o_kanban_manage_button_section"
+                                     groups="helpdesk_mngmnt.helpdesk_group_manager">
+                                    <a class="o_kanban_manage_toggle_button o_dropdown_kanban" href="#">
+                                        <i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content" t-if="!selection_mode">
+                                <div class="row mt-3" t-if="!selection_mode">
+                                    <div class="col-4"/>
+                                    <div class="col-8">
+                                        <a name="action_view_closed_tickets" type="object"
+                                           title="Number of closed tickets."
+                                           class="justify-content-between flex-nowrap d-inline-flex w-100 mb4">
+                                            <span>Tickets Closed</span>
+                                            <field name="ticket_closed_count" class="ms-3 text-nowrap"/>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col">
+                                        <a name="%(helpdesk_mngmnt.helpdesk_ticket_action_open_tickets)d"
+                                           type="action" class="d-flex flex-column align-items-center">
+                                            <span class="fw-bold">
+                                                <field name="ticket_open_count"/>
+                                            </span>
+                                            <span class="text-muted">Open</span>
+                                        </a>
+                                    </div>
+                                    <div class="col border-start">
+                                        <a name="%(helpdesk_mngmnt.helpdesk_ticket_action_unassigned_tickets)d"
+                                           type="action" class="d-flex flex-column align-items-center">
+                                            <span class="fw-bold">
+                                                <field name="ticket_unassigned_count"/>
+                                            </span>
+                                            <span class="text-muted">Unassigned</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_manage_pane dropdown-menu" role="menu">
+                                <div t-if="widget.editable" class="row">
+                                </div>
+                                <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                    <div role="menuitem" aria-haspopup="true" class="col-8">
+                                        <ul class="oe_kanban_colorpicker" data-field="color" role="menu"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_action" model="ir.actions.act_window">
+        <field name="name">Ticket Types</field>
+        <field name="res_model">helpdesk.ticket.type</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No types found.
+            </p>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_type_action_dashboard" model="ir.actions.act_window">
+        <field name="name">Ticket Types</field>
+        <field name="res_model">helpdesk.ticket.type</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+</odoo>
