@@ -641,6 +641,13 @@ msgstr "Плановые затраты"
 #. odoo-python
 #: code:addons/project_budget_nkk/models/project_budget_project.py:0
 #, python-format
+msgid "Please add steps to project"
+msgstr "Пожалуйста добавьте этапы в проект"
+
+#. module: project_budget_nkk
+#. odoo-python
+#: code:addons/project_budget_nkk/models/project_budget_project.py:0
+#, python-format
 msgid "Please enter financial data to project {0}"
 msgstr ""
 "Пожалуйста добавьте Финансовые показатели в проект {0}, его вероятность "

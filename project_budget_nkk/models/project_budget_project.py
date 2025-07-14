@@ -92,6 +92,12 @@ class Project(models.Model):
             if project.env.context.get('form_fix_budget'):
                 continue
             if (project.stage_id.code in ('30', '50', '75', '100')
+                    and project.project_have_steps
+                    and not project.step_project_child_ids):
+                raisetext = _("Please add steps to project")
+                raise ValidationError(raisetext)
+
+            if (project.stage_id.code in ('30', '50', '75', '100')
                     and project.amount_untaxed == 0
                     and project.cost_price == 0
                     and not project.project_have_steps
