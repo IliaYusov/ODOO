@@ -14,6 +14,7 @@
         'security/helpdesk_security.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
+        'data/helpdesk_data.xml',
         'views/helpdesk_ticket_views.xml',
         'views/helpdesk_team_views.xml',
         'views/helpdesk_ticket_type_views.xml',

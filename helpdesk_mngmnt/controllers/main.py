@@ -29,7 +29,7 @@ class HelpdeskTicketController(http.Controller):
         )
 
     @http.route("/helpdesk/ticket/submitted", type='http', auth='user', website=True, csrf=True)
-    def submit_ticket(self, **kw):
+    def submitted_ticket(self, **kw):
         vals = self._prepare_submit_ticket_vals(**kw)
         new_ticket = request.env['helpdesk.ticket'].sudo().create(vals)
         new_ticket.message_subscribe(partner_ids=request.env.user.partner_id.ids)
@@ -55,23 +55,24 @@ class HelpdeskTicketController(http.Controller):
         type = http.request.env['helpdesk.ticket.type'].browse(
             int(kw.get('type'))
         )
-        company = type.company_id or http.request.env.company
+        # company = type.company_id or http.request.env.company
+        company = http.request.env.company
         vals = {
-            'company_id': http.request.env.company,
+            'company_id': http.request.env.company.id,
             'type_id': type.id,
             'description': plaintext2html(kw.get('description')),
             'name': kw.get('subject'),
             # "attachment_ids": False,
             'partner_id': request.env.user.partner_id.company_id.id
         }
-        team = http.request.env['helpdesk.ticket.team']
-        if company.helpdesk_mgmt_portal_select_team and kw.get('team'):
-            team = (
-                http.request.env['helpdesk.ticket.team']
-                .sudo()
-                .search(
-                    [('id', '=', int(kw.get('team'))), ('show_in_portal', "=", True)]
-                )
-            )
-            vals['team_id'] = team.id
+        # team = http.request.env['helpdesk.ticket.team']
+        # if company.helpdesk_mgmt_portal_select_team and kw.get('team'):
+        #     team = (
+        #         http.request.env['helpdesk.ticket.team']
+        #         .sudo()
+        #         .search(
+        #             [('id', '=', int(kw.get('team'))), ('show_in_portal', "=", True)]
+        #         )
+        #     )
+        #     vals['team_id'] = team.id
         return vals

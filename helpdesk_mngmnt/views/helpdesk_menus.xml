@@ -2,7 +2,7 @@
 <odoo>
     <menuitem id="helpdesk_menu" name="Helpdesk" sequence="90" groups="helpdesk_mngmnt.helpdesk_group_user">
         <menuitem id="helpdesk_menu_tickets" name="Tickets" sequence="10"
-                  action="helpdesk_ticket_type_action_dashboard"/>
+                  action="helpdesk_ticket_action"/>
 
         <menuitem id="helpdesk_menu_configuration" sequence="100" name="Configuration"
                   groups="helpdesk_mngmnt.helpdesk_group_manager">

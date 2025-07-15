@@ -85,7 +85,7 @@ class HelpdeskTicket(models.Model):
                         _("Cannot create ticket of type '%(type_name)s': This type have no start stage defined!") % {
                             'type_name': type_id.name})
             if vals.get('user_id'):
-                vals['assign_date'] = fields.Datetime.now()
+                vals['date_assign'] = fields.Datetime.now()
 
             if vals.get('code', _('New')) == _('New'):
                 vals['code'] = self.env['ir.sequence'].next_by_code('helpdesk.ticket') or _('New')
@@ -94,9 +94,9 @@ class HelpdeskTicket(models.Model):
 
     def write(self, vals):
         if vals.get('user_id') and not self.date_assign:
-            vals['assign_date'] = fields.Datetime.now()
+            vals['date_assign'] = fields.Datetime.now()
 
-        res = super(HelpdeskTicket, self)
+        res = super(HelpdeskTicket, self).write(vals)
         return res
 
     # ------------------------------------------------------

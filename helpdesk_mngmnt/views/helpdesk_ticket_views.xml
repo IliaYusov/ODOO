@@ -78,7 +78,7 @@
                         <group>
                             <field name="partner_id" widget="res_partner_many2one" options="{'no_create_edit': True}"/>
                             <field name="priority" widget="priority"/>
-                            <field name="module_id"/>
+<!--                            <field name="module_id"/>-->
                         </group>
                     </group>
                     <notebook>

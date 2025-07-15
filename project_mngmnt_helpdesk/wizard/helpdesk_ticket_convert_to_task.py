@@ -77,5 +77,6 @@ class HelpdeskTicketConvertWizard(models.TransientModel):
             'stage_id': self.stage_id.id,
             'planned_date_begin': fields.Date.today(),
             'date_deadline': self.project_id.date_end,
-            'ticket_id': ticket.id
+            'ticket_id': ticket.id,
+            'type_id': self.env.ref('task.task_stage_type_to_do').id,
         }
