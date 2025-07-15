@@ -8,6 +8,8 @@
         <field name="report_file">license_mngmnt.report_license_certificate</field>
         <field name="print_report_name">'License Certificate %s' % object.customer_id.name</field>
         <field name="binding_model_id" ref="model_license_license"/>
+        <field name="paperformat_id" ref="license_mngmnt.A4_license_certificate" />
         <field name="binding_type">report</field>
     </record>
 </odoo>
+
