@@ -24,6 +24,12 @@ class Project(models.Model):
     end_sale_project_month = fields.Date(string='The period of shipment or provision of services to the Client(MONTH)',
                                          default=_get_default_end_sale_project_month, tracking=True)
 
+    profitable_contract_id = fields.Many2one(
+        'contract.contract', string='Profitable contract', domain="[('project_id.id', '=', id)]",
+        copy=True, tracking=True
+    )
+    dogovor_number = fields.Char(string='Dogovor number', compute='_compute_dogovor_number', readonly=False, store=True, tracking=True)
+
     cost_price = fields.Monetary(string='Cost Price', store=True, tracking=True, copy=True)
     cost_price_in_company_currency = fields.Monetary(string='Cost Price In Company Currency',
                                                      compute='_compute_amounts_in_company_currency',
@@ -274,6 +280,12 @@ class Project(models.Model):
     # ------------------------------------------------------
     # COMPUTE METHODS
     # ------------------------------------------------------
+
+    @api.depends('profitable_contract_id')
+    def _compute_dogovor_number(self):
+        for row in self:
+            if row.profitable_contract_id:
+                row.dogovor_number = row.profitable_contract_id.num
 
     def _calculate_amounts_in_company_currency(self, project):
         super(Project, self)._calculate_amounts_in_company_currency(project)

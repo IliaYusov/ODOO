@@ -127,15 +127,15 @@
                     <group>
                         <field name="project_id" readonly="1" string="Step ID"/>
                     </group>
-                    <group col="4">
-                        <group name="step_project_number">
+                    <group col="6">
+                        <group colspan="2" name="step_project_number">
                             <field name="step_project_number" placeholder="type step code e.g. 0001" attrs="{'readonly': [('can_edit', '=', False)]}"/> <!--обязательно при вероятности 100 и 100(done) -->
                         </group>
                         <group>
                             <field name="tax_id" placeholder="select vat attribute"
                                    attrs="{'readonly': [('can_edit', '=', False)]}"/>
                         </group>
-                        <group>
+                        <group colspan="2" >
                             <field name="dogovor_number"/>
                         </group>
                     </group>
@@ -285,13 +285,10 @@
                                        decoration-success="amount_total_in_company_currency &gt; 0"/>
                             </group>
                         </group>
-                        <group col="4">
+                        <group col="6">
                             <group name="currency_id">
                                 <field name="currency_id" attrs="{'readonly': [('can_edit', '=', False)]}"
                                        options="{'no_create_edit': True, 'no_open': True}"/>
-                            </group>
-                            <group>
-                                <field name="dogovor_number" attrs="{'readonly': [('can_edit', '=', False)]}"/>
                             </group>
                             <group>
                                 <field name="tax_id" options="{'no_create_edit': True, 'no_open': True}"
@@ -301,6 +298,9 @@
                                            'readonly': [('can_edit', '=', False)],
                                            'required': [('project_have_steps', '=', False)]
                                        }"/>
+                            </group>
+                            <group colspan="3">
+                                <field name="dogovor_number" attrs="{'readonly': [('can_edit', '=', False)]}"/>
                             </group>
                         </group>
 

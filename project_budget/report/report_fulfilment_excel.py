@@ -161,7 +161,7 @@ class ReportFulfilmentExcel(models.AbstractModel):
             data[prj.project_id]['currency_rate'] = prj.currency_rate
             data[prj.project_id]['amount_total_in_company_currency'] = prj.amount_total_in_company_currency
             data[prj.project_id]['start_date'] = prj.end_presale_project_month
-            data[prj.project_id]['end_date'] = prj.end_sale_project_month
+            data[prj.project_id]['end_date'] = 'Бессрочный' if prj.profitable_contract_id.is_unlimited else (prj.profitable_contract_id.date_end or '')
             cash_fact_amount = 0
             for cash_fact in cash_fact_ids:
                 cash_fact_amount += cash_fact.amount
