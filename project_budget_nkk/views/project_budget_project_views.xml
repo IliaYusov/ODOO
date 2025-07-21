@@ -176,6 +176,9 @@
                      'invisible': [('company_id', '!=', 14)]
                 }" context="{'default_project_id': id}"/>
             </xpath>
+            <xpath expr="//field[@name='dogovor_number']" position="attributes">
+                <attribute name="attrs">{'readonly': [('profitable_contract_id', '!=', False)]}</attribute>
+            </xpath>
         </field>
     </record>
 
@@ -608,6 +611,9 @@
                      'invisible': [('company_id', '!=', 14)]
                 }" context="{
                 'default_project_id': id}"/>
+            </xpath>
+            <xpath expr="//field[@name='dogovor_number']" position="attributes">
+                <attribute name="attrs">{'readonly': [('profitable_contract_id', '!=', False)]}</attribute>
             </xpath>
         </field>
     </record>
