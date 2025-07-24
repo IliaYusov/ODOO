@@ -259,7 +259,7 @@ class ReportBDDSExcel(models.AbstractModel):
                 cost_plan_list = project.planned_step_cost_flow_ids
             else:
                 continue
-            if budget_items.get(project.company_id.id):
+            if budget_items.get(project.company_id.id) and project.company_id.id in (7, 10):  # статьи бюджета использует Систематика и ЛИТР
                 project_data = deepcopy(budget_items[project.company_id.id])
             else:
                 project_data = {

@@ -103,7 +103,7 @@ class ReportBddsRawDataExcel(models.AbstractModel):
             sheet.write(row, column, flow_item.date, row_format_date)
             column += 1
 
-            if flow_item.budget_item_id.direction == 'income':
+            if flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction:
                 sheet.write(row, column, 'Поступление', row_format)
             elif flow_item.budget_item_id.direction == 'expense':
                 sheet.write(row, column, 'Расход', row_format)
@@ -123,6 +123,11 @@ class ReportBddsRawDataExcel(models.AbstractModel):
             column += 1
 
             sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
+            column += 1
+            if hasattr(flow_item, 'amount_remaining_in_company_currency'):
+                sheet.write(row, column, flow_item.amount_remaining_in_company_currency, row_format)
+            else:
+                sheet.write(row, column, '', row_format)
             column += 1
         return row
 
@@ -213,6 +218,8 @@ class ReportBddsRawDataExcel(models.AbstractModel):
         sheet.write_string(row, column, "Поставщик", row_format)
         column += 1
         sheet.write_string(row, column, "Сумма ДДС", row_format)
+        column += 1
+        sheet.write_string(row, column, "Нераспределенный остаток ДДС", row_format)
 
         cur_budget_cashes = self.env['project_budget.planned_cash_flow'].search([
             ('projects_id.commercial_budget_id', '=', budget.id),

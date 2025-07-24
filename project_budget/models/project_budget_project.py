@@ -793,23 +793,23 @@ class Project(models.Model):
                     for step in rows.step_project_child_ids:
                         if step.stage_id.code in ('50', '75', '100'):
                             if abs(step.amount_untaxed - step.planned_amount_untaxed_acts) > 100:
-                                raisetext = _("DENIED. planned_acceptance_sum <> amount_untaxed {0}")
-                                raisetext = raisetext.format(step.project_id)
+                                raisetext = _("DENIED. planned_acceptance_sum <> amount_untaxed {0}{1}")
+                                raisetext = raisetext.format(rows.project_id + ' | ', step.project_id)
                                 raise ValidationError(raisetext)
 
                             if abs(step.amount_total - step.planned_amount_total_cash_flow) > 100:
-                                raisetext = _("DENIED. planned_cash_sum <> amount_total {0}")
-                                raisetext = raisetext.format(step.project_id)
+                                raisetext = _("DENIED. planned_cash_sum <> amount_total {0}{1}")
+                                raisetext = raisetext.format(rows.project_id + ' | ', step.project_id)
                                 raise ValidationError(raisetext)
                 else:
                     if abs(rows.amount_untaxed - rows.planned_amount_untaxed_acts) > 100:
-                        raisetext = _("DENIED. planned_acceptance_sum <> amount_untaxed {0}")
-                        raisetext = raisetext.format(rows.project_id)
+                        raisetext = _("DENIED. planned_acceptance_sum <> amount_untaxed {0}{1}")
+                        raisetext = raisetext.format(rows.project_id, '')
                         raise ValidationError(raisetext)
 
                     if abs(rows.amount_total - rows.planned_amount_total_cash_flow) > 100:
-                        raisetext = _("DENIED. planned_cash_sum <> amount_total {0}")
-                        raisetext = raisetext.format(rows.project_id)
+                        raisetext = _("DENIED. planned_cash_sum <> amount_total {0}{1}")
+                        raisetext = raisetext.format(rows.project_id, '')
                         raise ValidationError(raisetext)
 
             if rows.approve_state == "need_approve_manager" and rows.budget_state == 'work' \

@@ -2592,15 +2592,15 @@ msgstr "Валюта проекта"
 #. odoo-python
 #: code:addons/project_budget/models/project_budget_project.py:0
 #, python-format
-msgid "DENIED. planned_acceptance_sum <> amount_untaxed {0}"
-msgstr "Сумма прогноза актирования не совпадает с суммой выручки {0}"
+msgid "DENIED. planned_acceptance_sum <> amount_untaxed {0}{1}"
+msgstr "Сумма прогноза актирования не совпадает с суммой выручки {0}{1}"
 
 #. module: project_budget
 #. odoo-python
 #: code:addons/project_budget/models/project_budget_project.py:0
 #, python-format
-msgid "DENIED. planned_cash_sum <> amount_total {0}"
-msgstr "Сумма прогноза ПДС не совпадает с суммой контрактования {0}"
+msgid "DENIED. planned_cash_sum <> amount_total {0}{1}"
+msgstr "Сумма прогноза ПДС не совпадает с суммой контрактования {0}{1}"
 
 #. module: project_budget
 #. odoo-python
