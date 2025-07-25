@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="helpdesk_ticket_stage_view_search" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.stage.search</field>
+        <field name="model">helpdesk.ticket.stage</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_stage_view_tree" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.stage.tree</field>
+        <field name="model">helpdesk.ticket.stage</field>
+        <field name="arch" type="xml">
+            <tree string="Stages">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="description" optional="hide"/>
+                <field name="type_ids" widget="many2many_tags" optional="show"/>
+                <field name="template_id" options="{'no_create_edit': True}" optional="hide"/>
+                <field name="fold" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_stage_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.stage.form</field>
+        <field name="model">helpdesk.ticket.stage</field>
+        <field name="arch" type="xml">
+            <form string="Stage Search" delete="0">
+                <field name="active" invisible="1" />
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_open_tickets" icon="fa-life-ring"
+                                attrs="{'invisible': [('ticket_count', '=', 0)]}">
+                            <field name="ticket_count" widget="statinfo" string="Tickets"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="template_id" context="{'default_model': 'helpdesk.ticket'}"/>
+                            <field name="sequence" groups="base.group_no_one"/>
+                        </group>
+                        <group>
+                            <field name="fold"/>
+                            <field name="type_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="helpdesk_ticket_stage_action" model="ir.actions.act_window">
+        <field name="name">Ticket Stages</field>
+        <field name="res_model">helpdesk.ticket.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="helpdesk_ticket_stage_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No stages found. Let's create one!
+            </p>
+            <p>
+                Adapt your pipeline to your workflow and track the progress of your tickets.
+            </p>
+        </field>
+    </record>
+</odoo>

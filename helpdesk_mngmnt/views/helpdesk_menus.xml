@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="helpdesk_menu" name="Helpdesk" sequence="90" groups="helpdesk_mngmnt.helpdesk_group_user">
+        <menuitem id="helpdesk_menu_tickets" name="Tickets" sequence="10"
+                  action="helpdesk_ticket_action"/>
+
+        <menuitem id="helpdesk_menu_configuration" sequence="100" name="Configuration"
+                  groups="helpdesk_mngmnt.helpdesk_group_manager">
+            <menuitem id="helpdesk_menu_configuration_teams" name="Helpdesk Teams" sequence="10"
+                      action="helpdesk_team_action"/>
+            <menuitem id="helpdesk_menu_configuration_types" name="Ticket Types" sequence="20"
+                      action="helpdesk_ticket_type_action"/>
+            <menuitem id="helpdesk_menu_configuration_stages" name="Ticket Stages" sequence="30"
+                      action="helpdesk_ticket_stage_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

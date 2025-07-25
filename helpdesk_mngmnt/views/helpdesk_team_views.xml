@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_team_view_search" model="ir.ui.view">
+        <field name="name">helpdesk.team.search</field>
+        <field name="model">helpdesk.team</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_company" string="Company" context="{'group_by': 'company_id'}"
+                            groups="base.group_multi_company"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="helpdesk_team_view_tree" model="ir.ui.view">
+        <field name="name">helpdesk.team.tree</field>
+        <field name="model">helpdesk.team</field>
+        <field name="arch" type="xml">
+            <tree string="Helpdesk Teams">
+                <field name="name" class="field_name"/>
+                <field name="team_lead_id" widget="many2one_avatar_user"/>
+                <field name="member_ids" widget="many2many_avatar_user" options="{'no_quick_create': True}"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create_edit': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="helpdesk_team_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.team.form</field>
+        <field name="model">helpdesk.team</field>
+        <field name="arch" type="xml">
+            <form string="Helpdesk Team">
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="can_edit" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <div class="oe_title">
+                        <h1 class="d-flex flex-row">
+                            <field name="name" class="o_text_overflow" placeholder="e.g. Customer Care"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="team_lead_id" widget="many2one_avatar_user"
+                               attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        <field name="member_ids" widget="many2many_avatar_user"
+                               options="{'no_open': True, 'no_create_edit': True}"
+                               attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                        <field name="company_id" groups="!base.group_multi_company" invisible="1"/>
+                        <field name="company_id" groups="base.group_multi_company"
+                               attrs="{'readonly':[('can_edit', '=', False)]}"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="helpdesk_team_action" model="ir.actions.act_window">
+        <field name="name">Helpdesk Teams</field>
+        <field name="res_model">helpdesk.team</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="helpdesk_team_view_search"/>
+    </record>
+</odoo>

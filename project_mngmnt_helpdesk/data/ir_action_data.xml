@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="helpdesk_ticket_action_convert_to_task" model="ir.actions.server">
+        <field name="name">Convert To Task</field>
+        <field name="model_id" ref="helpdesk_mngmnt.model_helpdesk_ticket"/>
+        <field name="binding_model_id" ref="helpdesk_mngmnt.model_helpdesk_ticket"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="groups_id" eval="[(4,ref('project_mngmnt.project_group_user'))]"/>
+        <field name="state">code</field>
+        <field name="code">action = records.action_convert_to_task()</field>
+    </record>
+</odoo>
