@@ -8,3 +8,5 @@ class Project(models.Model):
                                      domain="[('budget_state', '=', 'work'), ('step_status', '=', 'project'), ('partner_id', '=', partner_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]",
                                      groups='project_budget.project_budget_users,project_budget.project_budget_admin',
                                      tracking=True)
+
+    profitable_contract_id = fields.Many2one('contract.contract', related='opportunity_id.profitable_contract_id')

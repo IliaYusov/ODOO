@@ -54,3 +54,8 @@ msgstr ""
 #, python-format
 msgid "Projects"
 msgstr "Проекты"
+
+#. module: project_mngmnt_crm
+#: model:ir.model.fields,field_description:project_mngmnt_crm.field_project_project__profitable_contract_id
+msgid "Profitable contract"
+msgstr "Доходный договор"

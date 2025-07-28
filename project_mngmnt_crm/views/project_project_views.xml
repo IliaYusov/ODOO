@@ -8,6 +8,7 @@
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="opportunity_id" attrs="{'readonly': [('can_edit', '=', False)]}"
                        groups="project_budget.project_budget_users,project_budget.project_budget_admin"/>
+                <field name="profitable_contract_id" attrs="{'readonly': True, 'invisible': [('profitable_contract_id', '=', False)]}"/>
             </xpath>
         </field>
     </record>
