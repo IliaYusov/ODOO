@@ -270,7 +270,6 @@
                 <field name="date_start"/>
                 <field name="date_end"/>
                 <field name="analytic_account_id"/>
-                <field name="tag_ids"/>
                 <field name="is_favorite"/>
                 <field name="favorite_user_ids"/>
                 <templates>
@@ -289,7 +288,7 @@
                                                       title="Customer"/>
                                                 <t t-esc="record.partner_id.value"/>
                                             </span>
-                                            <div t-if="record.date_start.raw_value or record.date_end.raw_value"
+                                            <div name="dates" t-if="record.date_start.raw_value or record.date_end.raw_value"
                                                  class="text-muted o_row">
                                                 <span class="fa fa-clock-o me-2" title="Dates"/>
                                                 <field name="date_start"/>
@@ -298,8 +297,6 @@
                                                    aria-label="Arrow icon" title="Arrow"/>
                                                 <field name="date_end"/>
                                             </div>
-                                            <field name="tag_ids" widget="many2many_tags"
-                                                   options="{'color_field': 'color'}"/>
                                         </div>
                                     </div>
                                 </div>
