@@ -30,7 +30,7 @@
         <field name="model">task.task</field>
         <field name="inherit_id" ref="task.task_task_view_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='extra_info']//group[@name='creation_details']" position="inside">
+            <xpath expr="//page[@name='extra_info']//group[@name='creation_details']" position="after">
                 <group name="ticket_info" string="Ticket Info" groups="helpdesk_mngmnt.helpdesk_group_user">
                     <field name="ticket_id" attrs="{'readonly': [('can_edit', '=', False)]}"/>
                 </group>

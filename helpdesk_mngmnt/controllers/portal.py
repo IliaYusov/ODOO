@@ -23,11 +23,9 @@ class CustomerPortal(portal.CustomerPortal):
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
         if 'ticket_count' in counters:
-            values['ticket_count'] = (
-                request.env['helpdesk.ticket'].search_count([])
-                if request.env['helpdesk.ticket'].check_access_rights('read', raise_exception=False)
-                else 0
-            )
+            ticket_count = request.env['helpdesk.ticket'].search_count([]) \
+                if request.env['helpdesk.ticket'].check_access_rights('read', raise_exception=False) else 0
+            values['ticket_count'] = ticket_count
         return values
 
     @http.route([
@@ -45,7 +43,7 @@ class CustomerPortal(portal.CustomerPortal):
         '/helpdesk/ticket/<int:ticket_id>/<access_token>',
         '/my/ticket/<int:ticket_id>',
         '/my/ticket/<int:ticket_id>/<access_token>'
-    ], type='http', auth='public', website=True)
+    ], type='http', auth='user', website=True)
     def tickets_followup(self, ticket_id=None, access_token=None, **kw):
         try:
             ticket_sudo = self._document_check_access('helpdesk.ticket', ticket_id, access_token)

@@ -22,5 +22,10 @@
         'views/helpdesk_portal_templates.xml',
         'views/helpdesk_menus.xml'
     ],
+    'assets': {
+        'web.assets_frontend': [
+            'helpdesk_mngmnt/static/src/js/helpdesk_mngmnt_portal.js',
+        ],
+    },
     'license': 'LGPL-3'
 }

@@ -107,7 +107,9 @@
         <field name="name">helpdesk.ticket.kanban</field>
         <field name="model">helpdesk.ticket</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_small_column" default_group_by="stage_id" sample="1">
+            <kanban class="oe_background_grey o_kanban_dashboard o_kanban_small_column"
+                    type="object" sample="1" default_order="active desc, team_id, id" default_group_by="stage_id"
+                    quick_create="false" group_create="false" group_delete="false">
                 <field name="active"/>
                 <field name="team_id"/>
                 <templates>

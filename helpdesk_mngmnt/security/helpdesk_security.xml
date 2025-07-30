@@ -32,4 +32,12 @@
         <field name="domain_force">[(1, '=', 1)]</field>
         <field name="groups" eval="[(4, ref('helpdesk_mngmnt.helpdesk_group_manager'))]"/>
     </record>
+
+    <!--  Portal rules  -->
+    <record id="helpdesk_ticket_rule_portal" model="ir.rule">
+        <field name="name">Portal Tickets</field>
+        <field name="model_id" ref="model_helpdesk_ticket"/>
+        <field name="domain_force">[('author_id', '=', user.id),]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+    </record>
 </odoo>
