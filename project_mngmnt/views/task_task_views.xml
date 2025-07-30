@@ -68,4 +68,22 @@
             </xpath>
         </field>
     </record>
+
+    <record id="task_task_view_kanban_inherit_project" model="ir.ui.view">
+        <field name="name">task.task.kanban.inherit.project</field>
+        <field name="model">task.task</field>
+        <field name="inherit_id" ref="task.task_task_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='subtask_count']" position="after">
+                <field name="parent_ref_type"/>
+                <field name="parent_ref"/>
+            </xpath>
+            <xpath expr="//div[@class='o_kanban_record_headings']" position="inside">
+                <div attrs="{'invisible': [('parent_ref_type', '!=', 'project.project')]}" class="text-muted">
+                    <field name="parent_ref"/>
+                    <hr/>
+                </div>
+            </xpath>
+        </field>
+    </record>
 </odoo>

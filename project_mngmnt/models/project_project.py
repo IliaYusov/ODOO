@@ -8,6 +8,7 @@ class Project(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'name, id'
     _check_company_auto = True
+    _rec_name = 'name_to_show'
 
     @api.model
     def _read_group_stage_ids(self, stages, domain, order):
@@ -61,6 +62,7 @@ class Project(models.Model):
                                           ondelete='set null')
     task_ids = fields.One2many('task.task', 'parent_ref_id', string='Tasks',
                                domain=lambda self: [('parent_ref_type', '=', self._name)])
+    name_to_show = fields.Char(string='name_to_show', compute='_get_name_to_show')
     task_count = fields.Integer(compute='_compute_task_count', string='Tasks Count')
     milestone_count = fields.Integer(compute='_compute_milestone_count', string='Milestones Count')
     can_edit = fields.Boolean(compute='_compute_can_edit', default=True)
@@ -90,6 +92,12 @@ class Project(models.Model):
     # ------------------------------------------------------
     # COMPUTE METHODS
     # ------------------------------------------------------
+
+    @api.depends('code', 'name')
+    def _get_name_to_show(self):
+        for rec in self:
+            name = (rec.code + ' | ' + (rec.name or ''))
+            rec.name_to_show = name
 
     def _compute_can_edit(self):
         for rec in self:
