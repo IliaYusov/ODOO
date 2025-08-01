@@ -44,7 +44,7 @@
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <attribute name="attrs">
                     {
-                        'invisible': [('parent_ref_type', '=', 'project.project'), ('root_task_id', '=', False)],
+                        'invisible': [('parent_ref_type', '=', 'project.project'), ('parent_id', '=', False)],
                         'readonly': [('can_edit', '=', False)]
                     }
                 </attribute>
