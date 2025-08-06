@@ -122,8 +122,14 @@ class ReportBddsRawDataExcel(models.AbstractModel):
                 sheet.write(row, column, '', row_format)
             column += 1
 
-            sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
+            if flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction:
+                sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
+            elif flow_item.budget_item_id.direction == 'expense':
+                sheet.write(row, column, flow_item.amount_in_company_currency * -1, row_format)
+            else:
+                sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
             column += 1
+
             if hasattr(flow_item, 'amount_remaining_in_company_currency'):
                 sheet.write(row, column, flow_item.amount_remaining_in_company_currency, row_format)
             else:
