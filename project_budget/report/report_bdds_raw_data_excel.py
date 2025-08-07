@@ -97,23 +97,33 @@ class ReportBddsRawDataExcel(models.AbstractModel):
             sheet.write(row, column, spec.stage_id.code, row_format)
             column += 1
 
-            sheet.write(row, column, flow_item.flow_id, row_format)
+            if flow_item._fields.get("flow_id"):
+                sheet.write(row, column, flow_item.flow_id, row_format)
+            else:
+                sheet.write(row, column, '', row_format)
             column += 1
 
             sheet.write(row, column, flow_item.date, row_format_date)
             column += 1
 
-            if flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction:
+            if flow_item._fields.get("budget_item_id") and (flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction):
                 sheet.write(row, column, 'Поступление', row_format)
-            elif flow_item.budget_item_id.direction == 'expense':
+            elif flow_item._fields.get("budget_item_id") and flow_item.budget_item_id.direction == 'expense':
                 sheet.write(row, column, 'Расход', row_format)
             else:
                 sheet.write(row, column, '', row_format)
             column += 1
 
-            sheet.write(row, column, flow_item.budget_item_id.name or '', row_format)
+            if flow_item._fields.get("budget_item_id"):
+                sheet.write(row, column, flow_item.budget_item_id.name or '', row_format)
+            else:
+                sheet.write(row, column, '', row_format)
             column += 1
-            sheet.write(row, column, flow_item.account_type_id.name or '', row_format)
+
+            if flow_item._fields.get("budget_item_id"):
+                sheet.write(row, column, flow_item.account_type_id.name or '', row_format)
+            else:
+                sheet.write(row, column, '', row_format)
             column += 1
 
             if flow_item._fields.get("supplier_id"):
@@ -122,9 +132,9 @@ class ReportBddsRawDataExcel(models.AbstractModel):
                 sheet.write(row, column, '', row_format)
             column += 1
 
-            if flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction:
+            if flow_item._fields.get("budget_item_id") and (flow_item.budget_item_id.direction == 'income' or not flow_item.budget_item_id.direction):
                 sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
-            elif flow_item.budget_item_id.direction == 'expense':
+            elif flow_item._fields.get("budget_item_id") and flow_item.budget_item_id.direction == 'expense':
                 sheet.write(row, column, flow_item.amount_in_company_currency * -1, row_format)
             else:
                 sheet.write(row, column, flow_item.amount_in_company_currency, row_format)
@@ -137,7 +147,7 @@ class ReportBddsRawDataExcel(models.AbstractModel):
             column += 1
         return row
 
-    def print_worksheet(self, workbook, budget, sheet_name):
+    def print_worksheet(self, workbook, budget, sheet_name, mode):
         sheet = workbook.add_worksheet(sheet_name)
 
         row_format_date_month = workbook.add_format({
@@ -227,17 +237,24 @@ class ReportBddsRawDataExcel(models.AbstractModel):
         column += 1
         sheet.write_string(row, column, "Нераспределенный остаток ДДС", row_format)
 
-        cur_budget_cashes = self.env['project_budget.planned_cash_flow'].search([
-            ('projects_id.commercial_budget_id', '=', budget.id),
-        ])
+        if mode == 'forecast':
+            cur_budget_cash_forecasts = self.env['project_budget.planned_cash_flow'].search([
+                ('projects_id.commercial_budget_id', '=', budget.id),
+            ])
 
-        row = self.print_flow(workbook, sheet, cur_budget_cashes, row, 0)
+            row = self.print_flow(workbook, sheet, cur_budget_cash_forecasts, row, 0)
 
-        cur_budget_costs = self.env['project_budget.planned_cost_flow'].search([
-            ('projects_id.commercial_budget_id', '=', budget.id),
-        ])
+            cur_budget_costs = self.env['project_budget.planned_cost_flow'].search([
+                ('projects_id.commercial_budget_id', '=', budget.id),
+            ])
 
-        row = self.print_flow(workbook, sheet, cur_budget_costs, row, 0)
+            row = self.print_flow(workbook, sheet, cur_budget_costs, row, 0)
+        elif mode == 'fact':
+            cur_budget_cash_facts = self.env['project_budget.fact_cash_flow'].search([
+                ('projects_id.commercial_budget_id', '=', budget.id),
+            ])
+
+            row = self.print_flow(workbook, sheet, cur_budget_cash_facts, row, 0)
 
     def generate_xlsx_report(self, workbook, data, budgets):
 
@@ -245,4 +262,5 @@ class ReportBddsRawDataExcel(models.AbstractModel):
         budget = self.env['project_budget.commercial_budget'].search([('id', '=', commercial_budget_id)])
         budget_date = budget.date_actual or date.today()
 
-        self.print_worksheet(workbook, budget, 'bdds_raw_data ' + budget_date.strftime('%d.%m.%y'))
+        self.print_worksheet(workbook, budget, 'Прогноз ' + budget_date.strftime('%d.%m.%y'), 'forecast')
+        self.print_worksheet(workbook, budget, 'Факт ' + budget_date.strftime('%d.%m.%y'), 'fact')
