@@ -26,6 +26,12 @@ class Task(models.Model):
             if rec.parent_id.planned_hours < rec.parent_id.subtask_planned_hours:
                 raise ValidationError(_("Sum planned hours of subtask's must not exceed planned hours of parent task."))
 
+    @api.constrains('parent_ref_type', 'root_task_id')
+    def _check_only_manager_create_milestone(self):
+        for task in self:
+            if not self.user_has_groups('project_mngmnt.project_group_project_manager, project_mngmnt.project_group_manager') and task.parent_ref_type == 'project.project' and not task.root_task_id:
+                raise ValidationError(_('Only Project Manager could create a Milestone.'))
+
     # ------------------------------------------------------
     # COMPUTE METHODS
     # ------------------------------------------------------

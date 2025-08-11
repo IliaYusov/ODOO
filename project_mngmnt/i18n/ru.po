@@ -549,6 +549,13 @@ msgid "Planned dates of task should be in project's dates."
 msgstr ""
 
 #. module: project_mngmnt
+#. odoo-python
+#: code:addons/project_mngmnt/models/task_task.py:0
+#, python-format
+msgid "Only Project Manager could create a Milestone."
+msgstr "Только руководитель проекта может создавать Вехи"
+
+#. module: project_mngmnt
 #: model:ir.model,name:project_mngmnt.model_project_project
 #: model:ir.model.fields,field_description:project_mngmnt.field_project_member__project_id
 #: model:ir.model.fields,field_description:project_mngmnt.field_task_task__project_id
