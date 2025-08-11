@@ -160,7 +160,8 @@
                                    }"
                                    domain="['!', ('id', 'parent_of', id)]"
                                    attrs="{'readonly': [('can_edit', '=', False)]}">
-                                <tree>
+                                <tree no_open="1">
+                                    <button name="get_formview_action" string="View Task" type="object" class="btn-primary" icon="fa-edit"/>
                                     <field name="name"/>
                                     <field name="user_ids" domain="parent.user_ids_domain" widget="many2many_avatar_user"/>
                                     <field name="date_deadline" widget="date"/>
