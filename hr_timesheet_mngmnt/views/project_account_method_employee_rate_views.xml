@@ -37,6 +37,9 @@
                             <field name="name" class="o_text_overflow"/>
                         </h1>
                     </div>
+                    <group name="Manual hourly cost">
+                        <field name="manual_hourly_cost" widget="boolean_toggle" options="{'autosave': False}"/>
+                    </group>
                     <notebook>
                         <page name="expression" string="Expression">
                             <field name="expression" widget="ace" options="{'mode': 'python'}"/>

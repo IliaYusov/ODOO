@@ -1465,3 +1465,11 @@ msgstr "Вы можете приложить файлы к комментари�
 #: model_terms:ir.ui.view,arch_db:task.task_type_view_form
 msgid "days before deadline"
 msgstr "дня(-ей) до истечения срока"
+
+#. module: task
+#: model:ir.actions.act_window,name:task.task_tag_action
+#: model:ir.model.fields,field_description:task.field_task_task__tag_ids
+#: model:ir.ui.menu,name:task.task_tags_menu
+#: model_terms:ir.ui.view,arch_db:task.task_tag_view_tree
+msgid "Task Tags"
+msgstr "Теги задач"

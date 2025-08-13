@@ -7,13 +7,11 @@
         <menuitem id="project_menu_reporting" name="Reporting" sequence="90" active="False"/>
 
         <menuitem id="project_menu_configuration" name="Configuration" sequence="100" groups="project_group_manager">
-            <menuitem id="project_menu_configuration_stages" name="Project Stages" sequence="30"
-                      action="project_stage_action"/>
-            <menuitem id="project_menu_configuration_teams" name="Project Teams" sequence="50">
+            <menuitem id="project_menu_configuration_teams" name="Project Teams" sequence="10">
                 <menuitem id="project_menu_configuration_roles" name="Roles" sequence="1" action="project_role_action"/>
             </menuitem>
-
-            <menuitem id="project_menu_configuration_tags" name="Tags" sequence="100" action="project_tag_action"/>
+            <menuitem id="project_menu_configuration_stages" name="Project Stages" sequence="30" action="project_stage_action"/>
+            <menuitem id="project_menu_configuration_tags" name="Project Tags" sequence="40" action="project_tag_action"/>
         </menuitem>
     </menuitem>
 </odoo>

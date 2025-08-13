@@ -121,6 +121,8 @@
                         <group>
                             <field name="type_id" attrs="{'readonly': [('id', '!=', False)]}"
                                    options="{'no_open': True, 'no_quick_create': True}"/>
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"
+                                   attrs="{'readonly':[('can_edit', '=', False)]}"/>
                             <field name="user_ids" domain="user_ids_domain" widget="many2many_avatar_user"
                                    attrs="{'readonly': [('can_edit', '=', False)]}"
                                    options="{'no_open': True, 'no_quick_create': True}"/>

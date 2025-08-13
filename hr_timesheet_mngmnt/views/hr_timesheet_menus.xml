@@ -22,7 +22,7 @@
     </menuitem>
 
     <menuitem id="project_menu_configuration_operative_accounting" parent="project_mngmnt.project_menu_configuration"
-              name="Operative Accounting" sequence="60">
+              name="Operative Accounting" sequence="20">
         <menuitem id="project_menu_configuration_operative_accounting_account_methods"
                   name="Employee Rate Account Methods" sequence="1" action="project_account_method_employee_rate_action"
                   groups="base.group_no_one"/>

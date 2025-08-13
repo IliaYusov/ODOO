@@ -11,6 +11,7 @@ class AccountMethodEmployeeRate(models.Model):
     name = fields.Char(string='Name', copy=True, required=True, translate=True)
     sequence = fields.Integer(default=1)
     expression = fields.Text(string='Expression', copy=True, required=True)
+    manual_hourly_cost = fields.Boolean(string='Manual hourly cost')
     active = fields.Boolean('Active', default=True)
 
     @api.constrains('expression')

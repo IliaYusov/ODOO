@@ -12,15 +12,21 @@
         <record id="project_account_method_employee_rate_project_role" model="project.account.method.employee.rate">
             <field name="name">Project Role Rate</field>
             <field name="sequence">2</field>
-            <field name="expression">result = record.project_id.project_member_ids.filtered(lambda m: m.employee_id ==
-                record.employee_id and m.date_start &lt;= record.date &lt;= m.date_end)[:1].role_id.hourly_cost or 0.0
+            <field name="expression">result = record.role_id.hourly_cost or 0.0
             </field>
         </record>
 
         <record id="project_account_method_employee_rate_avg_employee" model="project.account.method.employee.rate">
             <field name="name">Average Employee Rate</field>
             <field name="sequence">3</field>
-            <field name="expression">result = record.employee_id.hourly_cost</field>
+            <field name="expression">result = record.employee_id.hourly_cost or 0.0</field>
+        </record>
+
+        <record id="project_account_method_employee_rate_project_member" model="project.account.method.employee.rate">
+            <field name="name">Project Member Rate</field>
+            <field name="sequence">4</field>
+            <field name="manual_hourly_cost">True</field>
+            <field name="expression"> </field>
         </record>
     </data>
 </odoo>

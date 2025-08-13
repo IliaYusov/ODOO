@@ -10,5 +10,6 @@
                   groups="base.group_system"/>
         <menuitem id="task_type_menu" action="action_task_type"/>
         <menuitem id="task_stage_type_menu" action="task_stage_type_action_form"/>
+        <menuitem id="task_tags_menu" action="task_tag_action"/>
     </menuitem>
 </odoo>

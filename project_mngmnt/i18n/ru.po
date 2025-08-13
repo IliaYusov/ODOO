@@ -556,6 +556,13 @@ msgid "Only Project Manager could create a Milestone."
 msgstr "Только руководитель проекта может создавать Вехи"
 
 #. module: project_mngmnt
+#. odoo-python
+#: code:addons/project_mngmnt/models/project_member.py:0
+#, python-format
+msgid "Overlapping roles."
+msgstr "Даты ролей в команде перекрываются.
+
+#. module: project_mngmnt
 #: model:ir.model,name:project_mngmnt.model_project_project
 #: model:ir.model.fields,field_description:project_mngmnt.field_project_member__project_id
 #: model:ir.model.fields,field_description:project_mngmnt.field_task_task__project_id
@@ -712,8 +719,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_mngmnt.field_project_project__tag_ids
 #: model:ir.ui.menu,name:project_mngmnt.project_menu_configuration_tags
 #: model_terms:ir.ui.view,arch_db:project_mngmnt.project_tag_view_tree
-msgid "Tags"
-msgstr "Теги"
+msgid "Project Tags"
+msgstr "Теги проектов"
 
 #. module: project_mngmnt
 #: model:ir.model,name:project_mngmnt.model_task_task

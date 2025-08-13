@@ -31,6 +31,7 @@
         'views/task_stage_type_views.xml',
         'views/task_stage_route_views.xml',
         'views/res_config_settings.xml',
+        'views/task_tag_views.xml',
         'views/task_menus.xml',
         'report/task_task_report_analysis_views.xml',
         'wizard/task_close_wizard.xml'

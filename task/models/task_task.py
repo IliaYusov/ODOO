@@ -99,6 +99,8 @@ class Task(models.Model):
                                                        column1='task_id', column2='attachment_id',
                                                        string='Response Attachments', copy=False)
     url = fields.Char('Url', compute='_get_url')
+    tag_ids = fields.Many2many('task.tag', relation='task_task_tag_rel', column1='task_id',
+                               column2='tag_id', string='Task Tags')
     attachment_ids = fields.One2many('ir.attachment', string='Attachments', compute='_compute_attachment_ids')
     attachment_count = fields.Integer(string='Attachment Count', compute='_compute_attachment_count')
 

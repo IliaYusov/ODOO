@@ -35,11 +35,17 @@
                         <tree editable="bottom" string="Timesheets" default_order="date">
                             <field name="date"/>
                             <field name="user_id" invisible="1"/>
+                            <field name="employee_domain_ids" invisible="1"/>
                             <field name="employee_id" required="1" widget="many2one_avatar_employee"
-                                   context="{'active_test': True}" options="{'relation': 'hr.employee'}"/>
+                                   context="{'active_test': True}" options="{'relation': 'hr.employee'}"
+                                   on_change="_onchange_employee_id(date)"/>
+                            <field name="role_domain_ids" invisible="1"/>
+                            <field name="role_id" on_change="_onchange_role_id(employee_id, date)"
+                            attrs="{'required': [('project_id', '!=', False)], 'column_invisible': [('project_id', '=', False)],}"/>
                             <field name="name" required="0"/>
                             <field name="unit_amount"
                                    decoration-danger="unit_amount &gt; 24 or unit_amount &lt; 0"/>
+                            <field name="amount" groups="hr_timesheet_mngmnt.hr_timesheet_group_manager"/>
                             <field name="project_id" invisible="1"/>
                             <field name="task_id" invisible="1"/>
                             <field name="company_id" invisible="1"/>

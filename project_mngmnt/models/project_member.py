@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class ProjectMember(models.Model):
@@ -19,3 +20,14 @@ class ProjectMember(models.Model):
     _sql_constraints = [
         ('project_participation_date_end_greater', 'check(date_end >= date_start)', 'The participation in the project start date must be before its end date.')
     ]
+
+    # ------------------------------------------------------
+    # CONSTRAINS
+    # ------------------------------------------------------
+
+    @api.constrains('employee_id', 'role_id', 'date_start', 'date_end')
+    def _must_not_have_overlapping_roles(self):
+        for rec in self:
+            for member in rec.project_id.project_member_ids:
+                if member != rec and member.employee_id == rec.employee_id and member.role_id == rec.role_id and member.date_start <= rec.date_end and member.date_end >= rec.date_start:
+                    raise ValidationError(_("Overlapping roles."))

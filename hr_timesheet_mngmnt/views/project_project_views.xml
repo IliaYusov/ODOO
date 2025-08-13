@@ -46,6 +46,7 @@
             <xpath expr="//form/sheet" position="inside">
                 <field name="allow_timesheets" invisible="1"/>
                 <field name="is_project_overtime" invisible="1"/>
+                <field name="manual_hourly_cost" invisible="1"/>
             </xpath>
             <xpath expr="//div[@name='dates']" position="after">
                 <label for="planned_hours" groups="hr_timesheet_mngmnt.hr_timesheet_group_user"/>

@@ -10,6 +10,7 @@ class Project(models.Model):
     account_method_employee_rate_id = fields.Many2one('project.account.method.employee.rate',
                                                       string='Account Method Employee Rate', copy=True,
                                                       ondelete='restrict')
+    manual_hourly_cost = fields.Boolean(related="account_method_employee_rate_id.manual_hourly_cost")
     currency_id = fields.Many2one(related='company_id.currency_id', readonly=True)
     hourly_cost = fields.Monetary(string='Hourly Cost', copy=True, default=0.0,
                                   groups='project_mngmnt.project_group_project_manager')

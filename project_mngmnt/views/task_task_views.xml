@@ -49,6 +49,14 @@
                     }
                 </attribute>
             </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="attributes">
+                <attribute name="attrs">
+                    {
+                        'invisible': ['|', '|', ('parent_ref_type', '!=', 'project.project'), ('root_task_id', '!=', False), ('parent_id', '!=', False)],
+                        'readonly': [('can_edit', '=', False)]
+                    }
+                </attribute>
+            </xpath>
             <xpath expr="//label[@for='date_deadline']" position="after">
                 <label for="date_deadline" string="Planned Dates"
                        attrs="{'invisible': [('parent_ref_type', '!=', 'project.project')]}"/>

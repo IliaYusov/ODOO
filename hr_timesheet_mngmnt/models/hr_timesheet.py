@@ -16,13 +16,6 @@ class AccountAnalyticLine(models.Model):
             ], limit=1).id
         return result
 
-    def _domain_employee_id(self):
-        domain = [
-            '|', ('company_id', '=', False), ('company_id', 'in', self.env.context.get('allowed_company_ids', []))]
-        if not self.user_has_groups('hr_timesheet_mngmnt.hr_timesheet_group_manager'):
-            domain.append(('user_id', '=', self.env.user.id))
-        return domain
-
     task_id = fields.Many2one('task.task', string='Task',
                               domain="[('parent_ref_type', '=', 'project.project')]", index='btree_not_null',
                               readonly=False, store=True)
@@ -31,14 +24,56 @@ class AccountAnalyticLine(models.Model):
     milestone_id = fields.Many2one('task.task', string='Milestone', compute='_compute_milestone_id', store=True)
     user_id = fields.Many2one('res.users', compute='_compute_user_id', store=True, readonly=False)
     employee_id = fields.Many2one('hr.employee', string='Employee', check_company=True, context={'active_test': False},
-                                  domain=_domain_employee_id)
+                                  domain="[('id', 'in', employee_domain_ids)]")
+    employee_domain_ids = fields.One2many('hr.employee', compute='_compute_employee_domain_ids')
+    role_id = fields.Many2one(
+        'project.role', string='Project Role', domain="[('id', 'in', role_domain_ids)]",
+        ondelete='restrict'
+    )
+    role_domain_ids = fields.One2many('project.role', compute='_compute_role_domain_ids')
     department_id = fields.Many2one('hr.department', string='Department', compute='_compute_department_id',
                                     compute_sudo=True, store=True)
     manager_id = fields.Many2one('hr.employee', string='Manager', related='employee_id.parent_id', store=True)
 
     # ------------------------------------------------------
+    # ONCHANGE METHODS
+    # ------------------------------------------------------
+
+    @api.onchange('employee_id', 'date')
+    def _onchange_role_id(self):
+        for rec in self:
+            rec.role_id = False
+
+    @api.onchange('date')
+    def _onchange_employee_id(self):
+        for rec in self:
+            rec.employee_id = False
+
+    # ------------------------------------------------------
     # COMPUTE METHODS
     # ------------------------------------------------------
+
+    @api.depends('employee_id', 'project_id', 'date')
+    def _compute_role_domain_ids(self):
+        for rec in self:
+            roles = rec.project_id.project_member_ids.filtered(
+                lambda m: m.employee_id == rec.employee_id and m.date_start <= rec.date <= m.date_end
+            ).role_id
+            rec.role_domain_ids = roles
+
+    @api.depends('project_id', 'date')
+    def _compute_employee_domain_ids(self):
+        for rec in self:
+            if not rec.user_has_groups('hr_timesheet_mngmnt.hr_timesheet_group_manager'):
+                employees = rec.env['hr.employee'].search([('user_id', '=', rec.env.user.id)])
+            else:
+                if rec.project_id:
+                    employees = rec.project_id.project_member_ids.filtered(
+                        lambda m: m.date_start <= rec.date <= m.date_end
+                    ).employee_id
+                else:
+                    employees = rec.env['hr.employee'].search(['|', ('company_id', '=', False), ('company_id', 'in', self.env.context.get('allowed_company_ids', []))])
+            rec.employee_domain_ids = employees
 
     @api.depends('task_id', 'task_id.project_id')
     def _compute_project_id(self):
@@ -125,17 +160,8 @@ class AccountAnalyticLine(models.Model):
 
     def _hourly_cost(self):
         self.ensure_one()
-        locals_dict = {
-            'record': self
-        }
-        try:
-            safe_eval(self.project_id.account_method_employee_rate_id.expression, locals_dict, mode='exec', nocopy=True)
-            result = locals_dict.get('result', 0.0)
-        except Warning as ex:
-            raise ex
-        except SyntaxError as ex:
-            raise UserError(_('Wrong python code defined.\n\nError: %s\nLine: %s, Column: %s\n\n%s' % (
-                ex.args[0], ex.args[1][1], ex.args[1][2], ex.args[1][3])))
+        result = self.project_id.project_member_ids.filtered(lambda m: m.employee_id == self.employee_id and m.date_start <= self.date <= m.date_end and m.role_id == self.role_id)[
+                 :1].hourly_cost or 0.0
         return result
 
     def _default_user(self):

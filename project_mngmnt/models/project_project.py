@@ -51,7 +51,7 @@ class Project(models.Model):
     date_end = fields.Date(string='Expiration Date', index=True, required=True, tracking=True,
                            help='Date on which this project ends. The timeframe defined on the project is taken into account when viewing its planning.')
     tag_ids = fields.Many2many('project.tag', relation='project_project_tag_rel', column1='project_id',
-                               column2='tag_id', string='Tags')
+                               column2='tag_id', string='Project Tags')
     favorite_user_ids = fields.Many2many('res.users', relation='project_favorite_user_rel', column1='project_id',
                                          column2='user_id', string='Favorite Of', copy=False)
     is_favorite = fields.Boolean(compute='_compute_is_favorite', compute_sudo=True, readonly=False,

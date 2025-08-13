@@ -141,6 +141,11 @@ msgid "Average Project Rate"
 msgstr "Средняя ставка по проекту"
 
 #. module: hr_timesheet_mngmnt
+#: model:project.account.method.employee.rate,name:hr_timesheet_mngmnt.project_account_method_employee_rate_project_member
+msgid "Project Member Rate"
+msgstr "Ставка согласно команде проекта"
+
+#. module: hr_timesheet_mngmnt
 #: model:ir.model,name:hr_timesheet_mngmnt.model_res_company
 msgid "Companies"
 msgstr "Компании"
@@ -249,6 +254,11 @@ msgid "Expression"
 msgstr "Выражение"
 
 #. module: hr_timesheet_mngmnt
+#: model:ir.model.fields,field_description:hr_timesheet_mngmnt.field_project_account_method_employee_rate__manual_hourly_cost
+msgid "Manual hourly cost"
+msgstr "Устанавливать ставку в команде проекта"
+
+#. module: hr_timesheet_mngmnt
 #: model_terms:ir.ui.view,arch_db:hr_timesheet_mngmnt.hr_timesheet_report_analysis_view_search
 msgid "Group By"
 msgstr "Группировать по"
@@ -256,6 +266,7 @@ msgstr "Группировать по"
 #. module: hr_timesheet_mngmnt
 #: model:ir.model.fields,field_description:hr_timesheet_mngmnt.field_project_project__hourly_cost
 #: model:ir.model.fields,field_description:hr_timesheet_mngmnt.field_project_role__hourly_cost
+#: model:ir.model.fields,field_description:hr_timesheet_mngmnt.field_project_member__hourly_cost
 msgid "Hourly Cost"
 msgstr "Стоимость чел/час"
 
@@ -378,6 +389,7 @@ msgstr ""
 
 #. module: hr_timesheet_mngmnt
 #: model:ir.model,name:hr_timesheet_mngmnt.model_project_role
+#: model:ir.model.fields,field_description:hr_timesheet_mngmnt.field_account_analytic_line__role_id
 msgid "Project Role"
 msgstr "Роль"
 
